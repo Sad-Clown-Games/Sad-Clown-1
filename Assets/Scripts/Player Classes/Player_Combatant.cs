@@ -7,7 +7,7 @@ public class Player_Combatant : Combatant
     // Start is called before the first frame update
 
     //List of attacks the combatant has
-    List<Attack> attacks;
+    public List<Attack> attacks;
     void Start()
     {
         

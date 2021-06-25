@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Battle_Option : MonoBehaviour
+public class Option_Attack : Battle_Option
 {
     // Start is called before the first frame update
 
     Animator animator;
-    public bool hovered;
-    public string option_name;
-    public string option_description;
     void Start()
     {
         animator = GetComponent<Animator>();        
@@ -25,7 +22,7 @@ public class Battle_Option : MonoBehaviour
         }
     }
 
-    virtual public void Select_Option(){
+    public override void Select_Option(){
         Debug.Log("Dummy Action");
     }
 }

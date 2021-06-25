@@ -5,7 +5,11 @@ using UnityEngine;
 public class ActionOptionController : OptionController
 {
 
-    public override void Set_Options()
+    public List<Battle_Option> options;
+    public GameObject option_prefab;
+    public float x_offset;
+    public float y_offset;
+    public void Set_Options()
     {
         throw new System.NotImplementedException();
     }
