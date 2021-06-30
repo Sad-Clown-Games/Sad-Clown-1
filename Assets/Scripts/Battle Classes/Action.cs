@@ -5,5 +5,5 @@ using UnityEngine;
 [SerializeField]
 abstract public class Action : MonoBehaviour
 {
-    abstract public void Do_Action(List<GameObject> targets);
+    abstract public void Do_Action(Combatant actor, List<Combatant> targets);
 }

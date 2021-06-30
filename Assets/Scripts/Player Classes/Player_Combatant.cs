@@ -8,6 +8,11 @@ public class Player_Combatant : Combatant
 
     //List of attacks the combatant has
     public List<Attack> attacks;
+    public Vector3 menu_pos;
+
+    public Vector3 Get_Menu_Position(){
+        return transform.position + menu_pos;
+    }
     void Start()
     {
         

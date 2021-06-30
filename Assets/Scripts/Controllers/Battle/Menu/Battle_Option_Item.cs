@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Battle_Option_Skill : MonoBehaviour
+public class Battle_Option_Item : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -13,7 +13,7 @@ public class Battle_Option_Skill : MonoBehaviour
     public GameObject right_adjacent;
     public GameObject up_adjacent;
     public GameObject down_adjacent;
-    public Attack attack;
+    public Item item;
     public string description;
     public TMPro.TMP_Text text;
     public bool is_active;
@@ -35,17 +35,17 @@ public class Battle_Option_Skill : MonoBehaviour
 
     }
 
-    public void Activate(Attack attk){
+    public void Activate(Item i){
         is_active = true;
+        this.item = i;
+        text.text = i.item_name;
+        description = i.description;
         this.gameObject.SetActive(true);
-        attack = attk;
-        text.text = attack.attack_name;
-        description = attack.description;
     }
     public void Deactivate(){
         text.text = "null";
         description = "null";
-        attack = null;
+        item = null;
         this.gameObject.SetActive(false);
     }
 }

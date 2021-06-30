@@ -10,7 +10,10 @@ public class Game_Manager : MonoBehaviour
 {
 
     //Static reference
-    public static Game_Manager control;
+    public static Game_Manager Instance;
+
+    [Header("Player Data")]
+    public Player_Data player_data;
 
     [Header("Characters")]
     //we need a way to represent active party members, and also access stats at all times in a reasonable way
@@ -25,11 +28,11 @@ public class Game_Manager : MonoBehaviour
     {
         //Let the gameobject persist over the scenes
         DontDestroyOnLoad(gameObject);
-        //Check if the control instance is null
-        if (control == null)
+        //Check if the Instance instance is null
+        if (Instance == null)
         {
             //This instance becomes the single instance available
-            control = this;
+            Instance = this;
         }
     }
 

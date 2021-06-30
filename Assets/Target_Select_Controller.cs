@@ -13,6 +13,10 @@ public class Target_Select_Controller : OptionController
           options = battle_controller.Get_All_Combatants_Enemy_First();
      }
 
+     public void Set_Combatants_For_Support_Skill(){
+          options = battle_controller.Get_All_Combatants_Player_First();
+     }
+
      public void Set_Target(Combatant combatant){
           Show_Arrow();
           targeting_camera.m_LookAt = combatant.transform;
