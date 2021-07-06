@@ -17,12 +17,14 @@ public class Battle_Menu : MonoBehaviour
     //public ItemOptionController cur_options;
     public Target_Select_Controller target_options;
     public Item_Option_Controller item_options;
+    public Party_Switch_Controller switch_options;
     public int cur_option_idx;
     public bool is_action_select_menu;
     public bool is_skill_select_menu;
     public bool is_target_select_menu;
     public bool is_item_select_menu;
     public bool is_selecting_target;
+    public bool is_switching_party;
 
     public GameObject root_menu;
     public GameObject action_select_menu;
@@ -30,6 +32,7 @@ public class Battle_Menu : MonoBehaviour
     public GameObject target_select_menu;
     public GameObject item_select_menu;
     public GameObject cur_selection_menu;
+    public GameObject switch_select_menu;
 
     public Battle_Controller battle_controller;
 
@@ -37,6 +40,7 @@ public class Battle_Menu : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera skill_select_camera;
     public Cinemachine.CinemachineVirtualCamera item_select_camera;
     public Cinemachine.CinemachineVirtualCamera target_select_camera;
+    public Cinemachine.CinemachineVirtualCamera switch_select_camera;
 
     public Player_Combatant cur_combatant;
 
@@ -49,13 +53,15 @@ public class Battle_Menu : MonoBehaviour
     void Start()
     {
         target_options.Hide_Arrow();
+        switch_options.Hide_Arrow();
     }
 
     // Update is called once per frame
     void Update()
     {
         //if we do it during update then it'll be easier to position for chars
-        transform.position = cur_combatant.Get_Menu_Position();
+        if(cur_combatant)
+            transform.position = cur_combatant.Get_Menu_Position();
         float horiz = Input.GetAxisRaw("Horizontal");
         float vert = Input.GetAxisRaw("Vertical");
         bool input_select = Input.GetKeyDown("x");
@@ -71,6 +77,9 @@ public class Battle_Menu : MonoBehaviour
         }
         else if(is_target_select_menu){
             Target_Select_Menu(horiz,vert,input_select,input_cancel);
+        }
+        else if(is_switching_party){
+            Switch_Select_Menu(horiz,vert,input_select,input_cancel);
         }
 
         if(vert == 0)
@@ -100,10 +109,12 @@ public class Battle_Menu : MonoBehaviour
             switch (action_options.options[cur_option_idx].option_name)
             {
                 case "Attack":
-                    //base attack, straight to targets
+                    //base attack, straight to targets'
+                    Action_To_Target();
                     break;
                 case "Defend":
-                    //straight to creating a combat action
+                    //straight to creating a combat action\
+                    Action_To_Defend();
                     break;
                 case "Mental":
                     Action_To_Skills();
@@ -113,8 +124,10 @@ public class Battle_Menu : MonoBehaviour
                     break;
                 case "Switch":
                     //go to switching menus
+                    Action_To_Switch();
                     break;
                 case "Run":
+                    Action_To_Run();
                     break;
                 default:
                     Debug.Log("Invalid Name!");
@@ -298,7 +311,6 @@ public class Battle_Menu : MonoBehaviour
     }
 
     public void Target_Select_Menu(float horiz, float vert, bool select, bool cancel){
-
          if(!holding_horiz){
                 if(horiz > 0 && cur_option_idx < target_options.options.Count-1){
                     cur_option_idx += 1;
@@ -319,6 +331,9 @@ public class Battle_Menu : MonoBehaviour
                 case "skills":
                     Target_To_Skills();
                     break;
+                case "action":
+                    Target_To_Action();
+                    break;
             }
             
         }
@@ -330,15 +345,56 @@ public class Battle_Menu : MonoBehaviour
         }
     }
 
+    public void Switch_Select_Menu(float horiz, float vert, bool select, bool cancel){
+        if(!holding_horiz){
+            if(horiz > 0 && cur_option_idx < switch_options.options.Count-1){
+                int last_idx = cur_option_idx;
+                cur_option_idx++;
+                while(switch_options.options[cur_option_idx].is_being_switched && cur_option_idx < switch_options.options.Count-1){
+                    cur_option_idx++;
+                }
+                if(switch_options.options[cur_option_idx].is_being_switched){
+                    cur_option_idx = last_idx;
+                            //go back because there are no valid switching targets
+                }
+                holding_horiz = true;
+            }
+            if(horiz < 0 && cur_option_idx > 0){
+                int last_idx = cur_option_idx;
+                cur_option_idx--;
+                while(switch_options.options[cur_option_idx].is_being_switched && cur_option_idx > 0){
+                    cur_option_idx--;
+                }
+                if(switch_options.options[cur_option_idx].is_being_switched){
+                    cur_option_idx = last_idx;
+                            //go back because there are no valid switching targets
+                }
+                holding_horiz = true;
+            }
+         }
+        switch_options.Set_Target(switch_options.options[cur_option_idx]);
+        if(select){
+            switch_options.Hide_Arrow();
+            
+            //Add 4 to offset the active party members
+            battle_controller.Switch_Combatant(cur_option_idx+4);
+        }
+        if(cancel){
+            Switch_To_Action();
+        }
+    }
+
     public void Start_Selecting(Player_Combatant combatant){
         //Reset all cameras and views
         action_select_camera.Priority = 99;
         skill_select_camera.Priority = 0;
         target_select_camera.Priority = 0;
-        //is_target_select_menu = false;
-        //is_item_select_menu = false;
-        //is_selecting_target = false;
-        //is_action_select_menu = true;
+        switch_select_camera.Priority = 0;
+        is_target_select_menu = false;
+        is_item_select_menu = false;
+        is_selecting_target = false;
+        is_switching_party = false;
+        is_action_select_menu = true;
         //skill_select_menu.SetActive(false);
         //set reference
         cur_combatant = combatant;
@@ -428,6 +484,76 @@ public class Battle_Menu : MonoBehaviour
         return_menu = "skills";
     }
 
+    public void Action_To_Target(){
+        //We'll have a shader effect to hide them later
+        action_select_menu.SetActive(false);
+        battle_controller.Init_CombatAction(cur_combatant.default_attack);
+        battle_controller.cur_selected_action.action = cur_combatant.default_attack;
+        target_select_camera.Priority = 99;
+        action_select_camera.Priority = 0;
+        cur_selection_menu = target_select_menu;
+        is_target_select_menu = true;
+        is_action_select_menu = false;
+        target_options.Set_Combatants_For_Attack_Skill();
+        target_options.Set_Target(target_options.options[cur_option_idx]);
+        cur_option_idx = 0;
+        return_menu = "action";
+    }
+    
+
+    public void Target_To_Action(){
+        target_options.Hide_Arrow();
+        action_select_menu.SetActive(true);
+        target_select_camera.Priority = 0;
+        action_select_camera.Priority = 99;
+        cur_selection_menu = action_select_menu;
+        is_action_select_menu = true;
+        is_target_select_menu = false;
+        cur_option_idx = 0;
+    }
+
+    public void Action_To_Switch(){
+        action_select_menu.SetActive(false);
+        switch_select_camera.Priority = 99;
+        action_select_camera.Priority = 0;
+        cur_selection_menu = switch_select_menu;
+        is_switching_party = true;
+        is_action_select_menu = false;
+        switch_options.Set_Reserve_Characters();
+        cur_option_idx = 0;
+        while(switch_options.options[cur_option_idx].is_being_switched && cur_option_idx < switch_options.options.Count){
+            cur_option_idx++;
+        }
+        if(switch_options.options[cur_option_idx].is_being_switched){
+            Switch_To_Action();
+            //go back because there are no valid switching targets
+        }
+        switch_options.Set_Target(switch_options.options[cur_option_idx]);
+    }
+    
+
+    public void Switch_To_Action(){
+        switch_options.Hide_Arrow();
+        action_select_menu.SetActive(true);
+        switch_select_camera.Priority = 0;
+        action_select_camera.Priority = 99;
+        cur_selection_menu = action_select_menu;
+        is_action_select_menu = true;
+        is_switching_party = false;
+        cur_option_idx = 4;
+    }
+
+
+    public void Action_To_Defend(){
+        action_options.options[cur_option_idx].hovered = false;
+        battle_controller.Init_CombatAction(cur_combatant.default_guard);
+        battle_controller.cur_selected_action.action = cur_combatant.default_guard;
+        List<Combatant> self_target = new List<Combatant>();
+        self_target.Add(cur_combatant);
+        battle_controller.Confirm_Action(self_target);
+        cur_option_idx = 0;
+    }
+
     public void Items_To_Target(){
         //We'll have a shader effect to hide them later
         action_select_menu.SetActive(false);
@@ -478,6 +604,11 @@ public class Battle_Menu : MonoBehaviour
         cur_option_idx = 0;
     }
 
+    public void Action_To_Run(){
+        //Once scene switching is in we'll do a run sequence.
+        return;
+    }
+  
 
     public void HideMenus(){
         root_menu.SetActive(false);

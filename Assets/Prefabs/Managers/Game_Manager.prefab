@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8037341148898824148}
   - component: {fileID: 6751209864556449793}
+  - component: {fileID: 1722190169}
   m_Layer: 0
   m_Name: Game_Manager
   m_TagString: Untagged
@@ -43,3 +44,217 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70a0a760875aee641a78addac91872e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_data: {fileID: 1722190169}
+  placeholder1: {fileID: 4047353017935954400, guid: cd7c23e8d2bd49441aa701eeceffa5db, type: 3}
+  placeholder2: {fileID: 6962501668200596171, guid: 109820f6a2fdf254b9a24cc58d8ffa35, type: 3}
+  placeholder3: {fileID: 3987092833197309856, guid: bf75f5b7fd0745b4ab8608b5dbab7ee0, type: 3}
+  placeholder4: {fileID: 557706244708556594, guid: 23a0302f6f8c3274f8287e44f660a91c, type: 3}
+  placeholder5: {fileID: 3454258133064093783, guid: f3e3b1de434643845aeb6012187e9b13, type: 3}
+  placeholder6: {fileID: 4119425700341342051, guid: 91a77a5f5457be449b82a754760969d6, type: 3}
+  placeholder7: {fileID: 3237096699615760255, guid: 6f9ffed78c508d547bf9d8511e6af903, type: 3}
+  placeholder8: {fileID: 1961767022811789654, guid: c01a5f4c1c66682479e9986826b2d0a8, type: 3}
+  party_list:
+  - {fileID: 4047353017935954400, guid: cd7c23e8d2bd49441aa701eeceffa5db, type: 3}
+  - {fileID: 6962501668200596171, guid: 109820f6a2fdf254b9a24cc58d8ffa35, type: 3}
+  - {fileID: 3987092833197309856, guid: bf75f5b7fd0745b4ab8608b5dbab7ee0, type: 3}
+  - {fileID: 557706244708556594, guid: 23a0302f6f8c3274f8287e44f660a91c, type: 3}
+  - {fileID: 3454258133064093783, guid: f3e3b1de434643845aeb6012187e9b13, type: 3}
+  - {fileID: 4119425700341342051, guid: 91a77a5f5457be449b82a754760969d6, type: 3}
+  - {fileID: 3237096699615760255, guid: 6f9ffed78c508d547bf9d8511e6af903, type: 3}
+  - {fileID: 1961767022811789654, guid: c01a5f4c1c66682479e9986826b2d0a8, type: 3}
+--- !u!114 &1722190169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783682728282181618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5619eee2970daf8439c6ce10dca39eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  save_data:
+    save_location:
+      name: 
+      scene_name: 
+      transform: {x: 0, y: 0, z: 0}
+    saved_items:
+      items: []
+    party_data:
+      placeholder1:
+        stats:
+          max_hp: 0
+          max_mp: 0
+          cur_hp: 0
+          cur_mp: 0
+          atk: 0
+          def: 0
+          luc: 0
+          spd: 0
+          status_effects: []
+          is_unlocked: 1
+          party_order: 0
+        equipment:
+          head: 
+          body: 
+          weapon: 
+        unique_flag: 1
+        unique_stat: 0
+      placeholder2:
+        stats:
+          max_hp: 0
+          max_mp: 0
+          cur_hp: 0
+          cur_mp: 0
+          atk: 0
+          def: 0
+          luc: 0
+          spd: 0
+          status_effects: []
+          is_unlocked: 1
+          party_order: 0
+        equipment:
+          head: 
+          body: 
+          weapon: 
+        unique_flag: 1
+        unique_stat: 0
+      placeholder3:
+        stats:
+          max_hp: 0
+          max_mp: 0
+          cur_hp: 0
+          cur_mp: 0
+          atk: 0
+          def: 0
+          luc: 0
+          spd: 0
+          status_effects: []
+          is_unlocked: 1
+          party_order: 0
+        equipment:
+          head: 
+          body: 
+          weapon: 
+        unique_flag: 1
+        unique_stat: 0
+      placeholder4:
+        stats:
+          max_hp: 0
+          max_mp: 0
+          cur_hp: 0
+          cur_mp: 0
+          atk: 0
+          def: 0
+          luc: 0
+          spd: 0
+          status_effects: []
+          is_unlocked: 0
+          party_order: 0
+        equipment:
+          head: 
+          body: 
+          weapon: 
+        unique_flag: 1
+        unique_stat: 0
+      placeholder5:
+        stats:
+          max_hp: 0
+          max_mp: 0
+          cur_hp: 0
+          cur_mp: 0
+          atk: 0
+          def: 0
+          luc: 0
+          spd: 0
+          status_effects: []
+          is_unlocked: 1
+          party_order: 0
+        equipment:
+          head: 
+          body: 
+          weapon: 
+        unique_flag: 1
+        unique_stat: 0
+      placeholder6:
+        stats:
+          max_hp: 0
+          max_mp: 0
+          cur_hp: 0
+          cur_mp: 0
+          atk: 0
+          def: 0
+          luc: 0
+          spd: 0
+          status_effects: []
+          is_unlocked: 1
+          party_order: 0
+        equipment:
+          head: 
+          body: 
+          weapon: 
+        unique_flag: 1
+        unique_stat: 0
+      placeholder7:
+        stats:
+          max_hp: 0
+          max_mp: 0
+          cur_hp: 0
+          cur_mp: 0
+          atk: 0
+          def: 0
+          luc: 0
+          spd: 0
+          status_effects: []
+          is_unlocked: 1
+          party_order: 0
+        equipment:
+          head: 
+          body: 
+          weapon: 
+        unique_flag: 1
+        unique_stat: 0
+      placeholder8:
+        stats:
+          max_hp: 0
+          max_mp: 0
+          cur_hp: 0
+          cur_mp: 0
+          atk: 0
+          def: 0
+          luc: 0
+          spd: 0
+          status_effects: []
+          is_unlocked: 1
+          party_order: 0
+        equipment:
+          head: 
+          body: 
+          weapon: 
+        unique_flag: 1
+        unique_stat: 0
+    game_flags:
+      global:
+        flag1: 0
+        flag2: 0
+        flag3: 0
+      test_scene:
+        flag1: 0
+        flag2: 0
+        flag3: 0
+  items:
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}

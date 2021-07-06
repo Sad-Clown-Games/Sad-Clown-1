@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9010461152518348723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9010461152518348724}
+  - component: {fileID: 6962501668200596171}
+  - component: {fileID: 6137849068812101990}
+  m_Layer: 0
+  m_Name: PartyMember_PlaceHolder2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9010461152518348724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010461152518348723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6962501668200596171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010461152518348723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b02525423551e4bb85936ba92adeda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character_name: PartyMember2
+  battle_object: {fileID: 6137849068812101990}
+--- !u!114 &6137849068812101990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010461152518348723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c79a2862f7280478f70d5a7c09913b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle_cam: {fileID: 0}
+  combatant_name: 2
+  default_attack: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  default_guard: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  target_arrow_location: {x: 0, y: 1, z: 0}
+  pawn: {fileID: 0}
+  attacks:
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 6453920104481559601, guid: 4bac5d582eb415e4fb5f1a06b692d55d, type: 3}
+  - {fileID: 472025339681209205, guid: ebe7fd65af7b9344da8b2c7bef9a01a8, type: 3}
+  - {fileID: 513778521953757694, guid: a95f3aa4ec37f3146ad18aeca71d2a02, type: 3}
+  menu_pos: {x: 0, y: -0.5, z: 3.82}
+  offset: {x: 0, y: 0.5, z: -4.2}
+  stats:
+    max_hp: 10
+    max_mp: 10
+    cur_hp: 10
+    cur_mp: 10
+    atk: 10
+    def: 10
+    luc: 10
+    spd: 10
+    status_effects: []
+    is_unlocked: 1
+    party_order: 1
+  animator: {fileID: 0}
+  battle_sprite: {fileID: 0}
+  is_being_switched: 0
