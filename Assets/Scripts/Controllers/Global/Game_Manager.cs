@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 /*
 Singleton responsible for scene changes, saving data, and pulling data.
 Add this to every scene.
@@ -26,8 +27,13 @@ public class Game_Manager : MonoBehaviour
     public GameObject placeholder6;
     public GameObject placeholder7;
     public GameObject placeholder8;
+    public Action_Registry action_registry;
+    //Object containing all helper functions script
 
     public List<Player_Character> party_list;
+    private List<Player_Character> data_ordered_party_list; //stupid ass implimentation but basically matches the order thatt Player Data has
+
+    //debug save game in inspector;
 
     void Awake()
     {
@@ -47,17 +53,30 @@ public class Game_Manager : MonoBehaviour
 
     public void Startup(){
         //Instantiate all the party members
-        Set_Party_List();
+        Instantiate_Party_List();
+        //Copy data from our 
+        Load_Game(); //remove later
         Copy_Data();
+        Order_Party_By_Party_Order();
     }
     public void Copy_Data(){
-
+        //copy data from Player_Data into each party member
+        
+        data_ordered_party_list[0].battle_object.stats = (player_data.save_data.party_data.placeholder1.stats);
+        data_ordered_party_list[1].battle_object.stats = (player_data.save_data.party_data.placeholder2.stats);
+        data_ordered_party_list[2].battle_object.stats = (player_data.save_data.party_data.placeholder3.stats);
+        data_ordered_party_list[3].battle_object.stats = (player_data.save_data.party_data.placeholder4.stats);
+        data_ordered_party_list[4].battle_object.stats = (player_data.save_data.party_data.placeholder5.stats);
+        data_ordered_party_list[5].battle_object.stats = (player_data.save_data.party_data.placeholder6.stats);
+        data_ordered_party_list[6].battle_object.stats = (player_data.save_data.party_data.placeholder7.stats);
+        data_ordered_party_list[7].battle_object.stats = (player_data.save_data.party_data.placeholder8.stats);
+        //load attacks into the 
+        foreach(Player_Character p in party_list){
+            p.battle_object.Set_Attacks_From_Stats();
+        }
     }
 
-    public void Set_Party_List(){
-        //ADD IN ORDER, IF YOU ADD A NEW CHARACTER APPEND IT TO THE BOTTOM OF THE LIST
-        //MAKE SURE YOU CHANGE THE PARTY ORDER IN THE INSPECTOR TO BE 0 - X NUM 
-        //I WAS DOING LEAD AND DRINKING METH WATER WHEN I DESIGNED THIS WHAT THE FUCK
+    public void Instantiate_Party_List(){
         party_list.Clear();
         party_list.Add(Instantiate(placeholder1).GetComponent<Player_Character>());
         party_list.Add(Instantiate(placeholder2).GetComponent<Player_Character>());
@@ -67,8 +86,24 @@ public class Game_Manager : MonoBehaviour
         party_list.Add(Instantiate(placeholder6).GetComponent<Player_Character>());
         party_list.Add(Instantiate(placeholder7).GetComponent<Player_Character>());
         party_list.Add(Instantiate(placeholder8).GetComponent<Player_Character>());
-        //NEVERMIND I'M FUCKING DUMB
+        data_ordered_party_list = party_list;
+    }
+
+    public void Order_Party_By_Party_Order(){
         party_list = party_list.OrderBy(w => w.battle_object.stats.party_order).ToList();
+    }
+
+    //it'll really break some shit if the order ever gets disrupted so this is a super headass way to do this,
+    //But I dug this hole, and it's honestly pretty shallow, this is probably as bad as it'll get.
+    public void Update_Party_Data(){
+        player_data.save_data.party_data.placeholder1.stats = data_ordered_party_list[0].battle_object.GetCharacter_Stats();
+        player_data.save_data.party_data.placeholder2.stats = data_ordered_party_list[1].battle_object.GetCharacter_Stats();
+        player_data.save_data.party_data.placeholder3.stats = data_ordered_party_list[2].battle_object.GetCharacter_Stats();
+        player_data.save_data.party_data.placeholder4.stats = data_ordered_party_list[3].battle_object.GetCharacter_Stats();
+        player_data.save_data.party_data.placeholder5.stats = data_ordered_party_list[4].battle_object.GetCharacter_Stats();
+        player_data.save_data.party_data.placeholder6.stats = data_ordered_party_list[5].battle_object.GetCharacter_Stats();
+        player_data.save_data.party_data.placeholder7.stats = data_ordered_party_list[6].battle_object.GetCharacter_Stats();
+        player_data.save_data.party_data.placeholder8.stats = data_ordered_party_list[7].battle_object.GetCharacter_Stats();
     }
 
     public void Swap_Party_Order(int a, int b){
@@ -113,4 +148,20 @@ public class Game_Manager : MonoBehaviour
         else
             party_list[idx].battle_object.is_being_switched = true;
     }
+
+    public void Save_Game(){
+        Transfer_Active_Party_Data_To_Saved_Party_Data();
+        Save_Load save = new Save_Load();
+        save.Save(player_data.save_data);
+    }
+    public void Load_Game(){
+        Save_Load load = new Save_Load();
+        player_data.save_data = load.Load();
+        player_data.items = action_registry.Get_Items_By_Names(player_data.save_data.saved_items.items);
+    }
+
+    public void Transfer_Active_Party_Data_To_Saved_Party_Data(){
+        Update_Party_Data();
+    }
+
 }

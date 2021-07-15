@@ -19,6 +19,7 @@ public class Battle_Menu : MonoBehaviour
     public Item_Option_Controller item_options;
     public Party_Switch_Controller switch_options;
     public int cur_option_idx;
+    public int cur_action_idx;
     public bool is_action_select_menu;
     public bool is_skill_select_menu;
     public bool is_target_select_menu;
@@ -339,9 +340,11 @@ public class Battle_Menu : MonoBehaviour
         }
         if(select){
             target_options.Hide_Arrow();
+            target_select_camera.Priority = 0;
+            is_target_select_menu = false;
             List<Combatant> targets = new List<Combatant>();
             targets.Add(target_options.options[cur_option_idx]);
-            battle_controller.Confirm_Action(targets);
+            battle_controller.Confirm_Action(targets,cur_action_idx);
         }
     }
 
@@ -480,6 +483,7 @@ public class Battle_Menu : MonoBehaviour
         is_skill_select_menu = false;
         target_options.Set_Combatants_For_Attack_Skill();
         target_options.Set_Target(target_options.options[cur_option_idx]);
+        cur_action_idx = cur_option_idx;
         cur_option_idx = 0;
         return_menu = "skills";
     }
@@ -496,6 +500,7 @@ public class Battle_Menu : MonoBehaviour
         is_action_select_menu = false;
         target_options.Set_Combatants_For_Attack_Skill();
         target_options.Set_Target(target_options.options[cur_option_idx]);
+        cur_action_idx = cur_option_idx;
         cur_option_idx = 0;
         return_menu = "action";
     }
@@ -550,7 +555,7 @@ public class Battle_Menu : MonoBehaviour
         battle_controller.cur_selected_action.action = cur_combatant.default_guard;
         List<Combatant> self_target = new List<Combatant>();
         self_target.Add(cur_combatant);
-        battle_controller.Confirm_Action(self_target);
+        battle_controller.Confirm_Action(self_target,0);
         cur_option_idx = 0;
     }
 

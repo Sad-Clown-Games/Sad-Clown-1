@@ -15,11 +15,18 @@ public class Game_Data
     public Game_Flags game_flags; //flags for scenes and global
 }
 
+//for storing info on when we go into battle
+[System.Serializable]
+public struct Last_Scene_Location{
+    public SerializableVector3 save_location;
+    public string scene_name;
+}
+
 [System.Serializable]
 public struct Save_Location{
     public string name;
     public string scene_name;
-    public Vector3 transform;
+    public SerializableVector3 save_location;
 }
 
 [System.Serializable]
@@ -38,6 +45,8 @@ public struct Character_Stats{
     public int luc;
     public int spd;
     public string[] status_effects;
+    public Saved_Equipment equipment;
+    public string[] skills;
     public bool is_unlocked;
     public int party_order; //we gotta make sure we audit the party so there's no dupes
 }
@@ -65,7 +74,6 @@ public struct Character_Data{
 [System.Serializable]
 public struct CharData_Placeholder1{
     public Character_Stats stats;
-    public Saved_Equipment equipment;
     public bool unique_flag;
     public int unique_stat;
 }
@@ -131,10 +139,10 @@ public struct CharData_Placeholder8{
 [System.Serializable]
 public struct Game_Flags{
     public Global_Flags global;
-    public Test_Scene_Flags test_scene;
+    public Test_Scene_Data test_scene;
 }
 
-//flags that apply to every scene, like if we had some constant visual effect or smthg
+//flags that apply to every scene, like if we had some constant visual effect or smthg, 
 [System.Serializable]
 public struct Global_Flags{
     public bool flag1;
@@ -143,10 +151,11 @@ public struct Global_Flags{
 }
 //scene flags would be "is x dead" "is door unlocked?" "is rock moved", when a scene is loaded we go through all of them and 
 //make sure it's in the correct state
+//Also for storing puzzle information like the locations of puzzle rocks 
 [System.Serializable]
-public struct Test_Scene_Flags{
-    public bool flag1;
-    public bool flag2;
-    public bool flag3;
+public struct Test_Scene_Data{
+    public bool puzzle_complete;
+    public SerializableVector3 puzzlerock1_location;
+    public SerializableVector3 puzzlerock2_location;
 }
 

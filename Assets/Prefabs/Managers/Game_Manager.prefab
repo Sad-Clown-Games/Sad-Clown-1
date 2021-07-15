@@ -28,7 +28,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5258216419831340308}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,14 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_data: {fileID: 1722190169}
-  placeholder1: {fileID: 4047353017935954400, guid: cd7c23e8d2bd49441aa701eeceffa5db, type: 3}
-  placeholder2: {fileID: 6962501668200596171, guid: 109820f6a2fdf254b9a24cc58d8ffa35, type: 3}
-  placeholder3: {fileID: 3987092833197309856, guid: bf75f5b7fd0745b4ab8608b5dbab7ee0, type: 3}
-  placeholder4: {fileID: 557706244708556594, guid: 23a0302f6f8c3274f8287e44f660a91c, type: 3}
-  placeholder5: {fileID: 3454258133064093783, guid: f3e3b1de434643845aeb6012187e9b13, type: 3}
-  placeholder6: {fileID: 4119425700341342051, guid: 91a77a5f5457be449b82a754760969d6, type: 3}
-  placeholder7: {fileID: 3237096699615760255, guid: 6f9ffed78c508d547bf9d8511e6af903, type: 3}
-  placeholder8: {fileID: 1961767022811789654, guid: c01a5f4c1c66682479e9986826b2d0a8, type: 3}
+  placeholder1: {fileID: 0}
+  placeholder2: {fileID: 0}
+  placeholder3: {fileID: 0}
+  placeholder4: {fileID: 0}
+  placeholder5: {fileID: 0}
+  placeholder6: {fileID: 0}
+  placeholder7: {fileID: 0}
+  placeholder8: {fileID: 0}
+  action_helper: {fileID: 0}
   party_list:
   - {fileID: 4047353017935954400, guid: cd7c23e8d2bd49441aa701eeceffa5db, type: 3}
   - {fileID: 6962501668200596171, guid: 109820f6a2fdf254b9a24cc58d8ffa35, type: 3}
@@ -78,7 +80,10 @@ MonoBehaviour:
     save_location:
       name: 
       scene_name: 
-      transform: {x: 0, y: 0, z: 0}
+      save_location:
+        x: 0
+        y: 0
+        z: 0
     saved_items:
       items: []
     party_data:
@@ -93,12 +98,13 @@ MonoBehaviour:
           luc: 0
           spd: 0
           status_effects: []
+          equipment:
+            head: 
+            body: 
+            weapon: 
+          skills: []
           is_unlocked: 1
           party_order: 0
-        equipment:
-          head: 
-          body: 
-          weapon: 
         unique_flag: 1
         unique_stat: 0
       placeholder2:
@@ -112,6 +118,11 @@ MonoBehaviour:
           luc: 0
           spd: 0
           status_effects: []
+          equipment:
+            head: 
+            body: 
+            weapon: 
+          skills: []
           is_unlocked: 1
           party_order: 0
         equipment:
@@ -131,6 +142,11 @@ MonoBehaviour:
           luc: 0
           spd: 0
           status_effects: []
+          equipment:
+            head: 
+            body: 
+            weapon: 
+          skills: []
           is_unlocked: 1
           party_order: 0
         equipment:
@@ -150,6 +166,11 @@ MonoBehaviour:
           luc: 0
           spd: 0
           status_effects: []
+          equipment:
+            head: 
+            body: 
+            weapon: 
+          skills: []
           is_unlocked: 0
           party_order: 0
         equipment:
@@ -169,12 +190,13 @@ MonoBehaviour:
           luc: 0
           spd: 0
           status_effects: []
+          equipment:
+            head: 
+            body: 
+            weapon: 
+          skills: []
           is_unlocked: 1
           party_order: 0
-        equipment:
-          head: 
-          body: 
-          weapon: 
         unique_flag: 1
         unique_stat: 0
       placeholder6:
@@ -188,6 +210,11 @@ MonoBehaviour:
           luc: 0
           spd: 0
           status_effects: []
+          equipment:
+            head: 
+            body: 
+            weapon: 
+          skills: []
           is_unlocked: 1
           party_order: 0
         equipment:
@@ -207,6 +234,11 @@ MonoBehaviour:
           luc: 0
           spd: 0
           status_effects: []
+          equipment:
+            head: 
+            body: 
+            weapon: 
+          skills: []
           is_unlocked: 1
           party_order: 0
         equipment:
@@ -226,6 +258,11 @@ MonoBehaviour:
           luc: 0
           spd: 0
           status_effects: []
+          equipment:
+            head: 
+            body: 
+            weapon: 
+          skills: []
           is_unlocked: 1
           party_order: 0
         equipment:
@@ -240,9 +277,15 @@ MonoBehaviour:
         flag2: 0
         flag3: 0
       test_scene:
-        flag1: 0
-        flag2: 0
-        flag3: 0
+        puzzle_complete: 0
+        puzzlerock1_location:
+          x: 0
+          y: 0
+          z: 0
+        puzzlerock2_location:
+          x: 0
+          y: 0
+          z: 0
   items:
   - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
   - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
@@ -257,4 +300,54 @@ MonoBehaviour:
   - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
   - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
   - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+  - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}
+--- !u!1 &7525560507765956024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5258216419831340308}
+  - component: {fileID: 7637576172722928458}
+  m_Layer: 0
+  m_Name: SkillHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5258216419831340308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7525560507765956024}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8037341148898824148}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7637576172722928458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7525560507765956024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d86a453f844a9c43aa80506ceed61e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks:
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 6453920104481559601, guid: 4bac5d582eb415e4fb5f1a06b692d55d, type: 3}
+  - {fileID: 472025339681209205, guid: ebe7fd65af7b9344da8b2c7bef9a01a8, type: 3}
+  - {fileID: 513778521953757694, guid: a95f3aa4ec37f3146ad18aeca71d2a02, type: 3}
+  items:
   - {fileID: 9057020220131097646, guid: 0fe8b40bfb5bb644baac0ccdf9bfacf2, type: 3}

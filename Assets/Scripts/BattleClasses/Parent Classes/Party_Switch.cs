@@ -14,5 +14,10 @@ public class Party_Switch : Action
         gm.Swap_Party_Order(active_idx,reserve_idx);
     }
 
-
+    override public void Reset_Cameras(){
+        return;
+    }
+    override public void Set_Camera_Order(int x){
+        return;
+    }
 }

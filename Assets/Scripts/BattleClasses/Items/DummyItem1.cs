@@ -23,4 +23,11 @@ public class DummyItem1 : Item
         Debug.Log("With Effect" + description);
 
     }
+
+    override public void Reset_Cameras(){
+        return;
+    }
+    override public void Set_Camera_Order(int x){
+        return;
+    }
 }

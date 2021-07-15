@@ -24,4 +24,10 @@ public class DummyAttack2 : Attack
         Debug.Log("With Base Damage:" + damage);
 
     }
+    override public void Reset_Cameras(){
+        return;
+    }
+    override public void Set_Camera_Order(int x){
+        return;
+    }
 }

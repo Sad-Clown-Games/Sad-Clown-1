@@ -13,9 +13,5 @@ public class Player_Combatant : Combatant
     //weapon
     
     public bool is_being_switched;
-    public Vector3 Get_Menu_Position(){
-        return pawn.transform.position + menu_pos;
-    }
-
 
 }

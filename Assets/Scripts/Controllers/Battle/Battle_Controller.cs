@@ -21,6 +21,13 @@ public class Battle_Controller : MonoBehaviour
     public Party_Switch party_switch;
     public float party_spacing;
 
+    public List<Action> executing_actions;
+    public GameObject action_base;
+    public CombatAction cur_executing_combat_action;
+    public Action cur_executing_action;
+    public bool is_executing_actions;
+    public int cur_executing_action_index;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +38,27 @@ public class Battle_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(is_executing_actions){
+            if(!cur_executing_combat_action.is_started){
+                //attach the action to a new gameobject
+                cur_executing_action = executing_actions[cur_executing_action_index];
+                //activate it?? idk this is fuking bonkers at this point
+                cur_executing_action.is_active = true;
+                cur_executing_combat_action.is_started = true;
+                cur_executing_action.Do_Action(cur_executing_combat_action.actor,cur_executing_combat_action.targets);
+            }
+            else if(!cur_executing_action.is_active){ //if the class is null
+                cur_executing_action_index++;
+                if(cur_executing_action_index >= round_actions.Count){
+                    is_executing_actions = false;
+                    round_actions.Clear();
+                    executing_actions.Clear();
+                    Start_Round();
+                }
+                else
+                    cur_executing_combat_action = round_actions[cur_executing_action_index];
+            }
+        }
     }
 
     public List<Combatant> Get_All_Combatants_Player_First(){
@@ -70,8 +97,9 @@ public class Battle_Controller : MonoBehaviour
 
 
     //eyy we're real devs now
-    public void Confirm_Action(List<Combatant> targets){
+    public void Confirm_Action(List<Combatant> targets,int index){
         cur_selected_action.targets = targets;
+        cur_selected_action.action.action_idx = index;
         Debug.Log(round_actions);
         round_actions.Add(cur_selected_action);
         if(cur_cp_idx < active_player_combatants.Count-1)
@@ -79,7 +107,6 @@ public class Battle_Controller : MonoBehaviour
         else{
             Calculate_Enemy_Attacks();
             Execute_Combat_Actions();
-            round_actions.Clear();
         }
     }
 
@@ -120,11 +147,16 @@ public class Battle_Controller : MonoBehaviour
 
     }
     private void Execute_Combat_Actions(){
-        foreach (CombatAction action in round_actions)
-        {
-            action.action.Do_Action(action.actor, action.targets);
+        int cam_order = 99;
+        foreach(CombatAction ca in round_actions){
+            var cur = (Instantiate(Game_Manager.Instance.action_registry.Get_Attack_By_Name(ca.Get_Action_Name())));
+            //cur.Set_Camera_Order(cam_order);
+            executing_actions.Add(cur);
+            cam_order -= 1;
         }
-        Start_Round();
+        is_executing_actions = true;
+        cur_executing_action_index = 0;
+        cur_executing_combat_action = round_actions[cur_executing_action_index];
     }
 
     public void Update_Party_Data(){

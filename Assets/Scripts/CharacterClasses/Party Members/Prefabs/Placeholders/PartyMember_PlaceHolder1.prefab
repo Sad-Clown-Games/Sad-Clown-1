@@ -64,11 +64,7 @@ MonoBehaviour:
   default_guard: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
   target_arrow_location: {x: 0, y: 1, z: 0}
   pawn: {fileID: 0}
-  attacks:
-  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
-  - {fileID: 6453920104481559601, guid: 4bac5d582eb415e4fb5f1a06b692d55d, type: 3}
-  - {fileID: 472025339681209205, guid: ebe7fd65af7b9344da8b2c7bef9a01a8, type: 3}
-  - {fileID: 513778521953757694, guid: a95f3aa4ec37f3146ad18aeca71d2a02, type: 3}
+  attacks: []
   menu_pos: {x: 0, y: -0.5, z: 3.82}
   offset: {x: 0, y: 0.5, z: -4.2}
   stats:
@@ -81,6 +77,11 @@ MonoBehaviour:
     luc: 10
     spd: 10
     status_effects: []
+    equipment:
+      head: 
+      body: 
+      weapon: 
+    skills: []
     is_unlocked: 1
     party_order: 0
   animator: {fileID: 0}
