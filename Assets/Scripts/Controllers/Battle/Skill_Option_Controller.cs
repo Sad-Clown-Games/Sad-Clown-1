@@ -11,6 +11,12 @@ public class Skill_Option_Controller : OptionController
     public float y_offset;
     public int cur_page = 0;
     public int cur_options = 0;
+    public TMPro.TextMeshPro page_number;
+
+
+    private void Update() {
+        page_number.text = (cur_page+1).ToString();
+    }
 
     public void Set_Options(List<Attack> combatant_attacks){
         Reset_Options();

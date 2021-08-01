@@ -16,13 +16,18 @@ public class DummyAttack3 : Attack
         
     }
 
-    public override void Do_Action(Combatant actor, List<Combatant> targets)
+    public override void Do_Action()
     {
-        Debug.Log(actor.combatant_name + "Is attacking ");
-        Debug.Log(targets);
+        Debug.Log(cur_actor.combatant_name + "Is attacking ");
+        Debug.Log(cur_targets);
         Debug.Log("With " + attack_name);
         Debug.Log("With Base Damage:" + damage);
 
+    }
+
+        public override void Stage_Action()
+    {
+        
     }
 
     override public void Reset_Cameras(){

@@ -6,7 +6,8 @@ public class Battle_Option : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    Animator animator;
+    public Animator animator;
+    public SpriteRenderer sprite;
     public bool hovered;
     public string option_name;
     public string option_description;
@@ -27,5 +28,9 @@ public class Battle_Option : MonoBehaviour
 
     virtual public void Select_Option(){
         Debug.Log("Dummy Action");
+    }
+
+    public void Gray_Out(){
+        sprite.color = Color.gray;
     }
 }

@@ -26,7 +26,6 @@ public class Battle_Menu : MonoBehaviour
     public bool is_item_select_menu;
     public bool is_selecting_target;
     public bool is_switching_party;
-
     public GameObject root_menu;
     public GameObject action_select_menu;
     public GameObject skill_select_menu;
@@ -68,19 +67,24 @@ public class Battle_Menu : MonoBehaviour
         bool input_select = Input.GetKeyDown("x");
         bool input_cancel = Input.GetKeyDown("c");
         if(is_action_select_menu){
-            Action_Select_Menu(horiz,vert,input_select,input_cancel);
+            if(CinemachineCore.Instance.IsLive(action_select_camera))
+                Action_Select_Menu(horiz,vert,input_select,input_cancel);
         }
         else if(is_item_select_menu){
-            Item_Select_Menu(horiz,vert,input_select,input_cancel);
+            if(CinemachineCore.Instance.IsLive(item_select_camera))
+                Item_Select_Menu(horiz,vert,input_select,input_cancel);
         }
         else if(is_skill_select_menu){
-            Skill_Select_Menu(horiz,vert,input_select,input_cancel);
+            if(CinemachineCore.Instance.IsLive(skill_select_camera))
+                Skill_Select_Menu(horiz,vert,input_select,input_cancel);
         }
         else if(is_target_select_menu){
-            Target_Select_Menu(horiz,vert,input_select,input_cancel);
+            if(CinemachineCore.Instance.IsLive(target_select_camera))
+                Target_Select_Menu(horiz,vert,input_select,input_cancel);
         }
         else if(is_switching_party){
-            Switch_Select_Menu(horiz,vert,input_select,input_cancel);
+            if(CinemachineCore.Instance.IsLive(switch_select_camera))
+                Switch_Select_Menu(horiz,vert,input_select,input_cancel);
         }
 
         if(vert == 0)
@@ -89,18 +93,104 @@ public class Battle_Menu : MonoBehaviour
             holding_horiz = false;
     }
 
+    //greys out options based on the inputted actor
+    public void Grey_Out_Options(Player_Combatant actor){
+        if(actor.attacks.Count < 1)
+            action_options.options[2].Gray_Out();
+        if(Game_Manager.Instance.player_data.items.Count < 1)
+            action_options.options[3].Gray_Out();
+        if(battle_controller.reserve_player_combatants.Count < 1)
+            action_options.options[4].Gray_Out();
+    }
+
     public void Action_Select_Menu(float horiz, float vert, bool select, bool cancel){
         int prev_option_index = cur_option_idx;
+        Grey_Out_Options(cur_combatant);
         if(vert < 0 && cur_option_idx < action_options.options.Count-1){
                 if(!holding_vert){
                     cur_option_idx += 1;
                     holding_vert = true;
+                    bool skip_option = false;
+                    //ok now we make sure that we're not selecting a gray option
+                    do
+                    {
+                        skip_option = false;
+                        switch (action_options.options[cur_option_idx].option_name)
+                            {
+                                case "Defend":
+                                    //maybe we disallow it under a status effect
+                                    break;
+                                case "Mental":
+                                    //no skills
+                                    if(cur_combatant.attacks.Count < 1){
+                                        cur_option_idx += 1;
+                                        skip_option = true;
+                                    }
+                                    break;
+                                case "Items":
+                                    //no items
+                                    if(Game_Manager.Instance.player_data.items.Count < 1){
+                                        cur_option_idx += 1;
+                                        skip_option = true;
+                                    }
+                                    break;
+                                case "Switch":
+                                    if(battle_controller.reserve_player_combatants.Count < 1){
+                                        cur_option_idx += 1;
+                                        skip_option = true;
+                                    }
+                                    //gray out if we have nobody to switch to
+                                    break;
+                                case "Run":
+                                    //maybe we gray out run at some point
+                                    break;
+                                default:
+                                    break;
+                            }
+                    } while (skip_option);
+
                 }
             }
         if(vert > 0 && cur_option_idx > 0){
             if(!holding_vert){
                 cur_option_idx -= 1;
                 holding_vert = true;
+                bool skip_option;
+                do{
+                    skip_option = false;
+                    switch (action_options.options[cur_option_idx].option_name)
+                    {
+                        case "Defend":
+                            //maybe we disallow it under a status effect
+                            break;
+                        case "Mental":
+                            //no skills
+                            if(cur_combatant.attacks.Count < 1){
+                                cur_option_idx -= 1;
+                                skip_option = true;
+                            }
+                            break;
+                        case "Items":
+                            //no items
+                            if(Game_Manager.Instance.player_data.items.Count < 1){
+                                cur_option_idx -= 1;
+                                skip_option = true;
+                            }
+                            break;
+                        case "Switch":
+                                if(battle_controller.reserve_player_combatants.Count < 1){
+                                cur_option_idx -= 1;
+                                skip_option = true;
+                            }
+                            //gray out if we have nobody to switch to
+                            break;
+                        case "Run":
+                            //maybe we gray out run at some point
+                            break;
+                        default:
+                            break;
+                    }
+                } while (skip_option);
             }
         }
         action_options.options[cur_option_idx].hovered = true;
@@ -481,7 +571,8 @@ public class Battle_Menu : MonoBehaviour
         cur_selection_menu = target_select_menu;
         is_target_select_menu = true;
         is_skill_select_menu = false;
-        target_options.Set_Combatants_For_Attack_Skill();
+        //set valid targets as everyone except the target;
+        target_options.Set_Combatants_For_Attack_Skill(cur_combatant);
         target_options.Set_Target(target_options.options[cur_option_idx]);
         cur_action_idx = cur_option_idx;
         cur_option_idx = 0;
@@ -498,7 +589,7 @@ public class Battle_Menu : MonoBehaviour
         cur_selection_menu = target_select_menu;
         is_target_select_menu = true;
         is_action_select_menu = false;
-        target_options.Set_Combatants_For_Attack_Skill();
+        target_options.Set_Combatants_For_Attack_Skill(cur_combatant);
         target_options.Set_Target(target_options.options[cur_option_idx]);
         cur_action_idx = cur_option_idx;
         cur_option_idx = 0;
@@ -607,6 +698,15 @@ public class Battle_Menu : MonoBehaviour
         is_action_select_menu = false;
         is_item_select_menu = true;
         cur_option_idx = 0;
+    }
+
+    public void Reset_Menu_Cameras(){
+        //set all cameras to priority 0
+        target_select_camera.Priority = 0;
+        item_select_camera.Priority = 0;
+        skill_select_camera.Priority = 0;
+        switch_select_camera.Priority = 0;
+        action_select_camera.Priority = 0;
     }
 
     public void Action_To_Run(){

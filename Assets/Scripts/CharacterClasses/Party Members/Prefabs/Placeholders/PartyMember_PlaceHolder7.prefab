@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2197084639042559145}
   - component: {fileID: 3237096699615760255}
   - component: {fileID: 8499004088028169160}
+  - component: {fileID: 8827357385238576798}
   m_Layer: 0
   m_Name: PartyMember_PlaceHolder7
   m_TagString: Untagged
@@ -64,6 +65,7 @@ MonoBehaviour:
   default_guard: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
   target_arrow_location: {x: 0, y: 1, z: 0}
   pawn: {fileID: 0}
+  pawn_prefab: {fileID: 5696637495109534840, guid: af7168d3035d2f340babcb9057deadd9, type: 3}
   attacks:
   - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
   - {fileID: 6453920104481559601, guid: 4bac5d582eb415e4fb5f1a06b692d55d, type: 3}
@@ -80,9 +82,39 @@ MonoBehaviour:
     def: 10
     luc: 10
     spd: 10
+    crit_dmg: 0
     status_effects: []
+    equipment:
+      head: 
+      body: 
+      weapon: 
+    skills: []
     is_unlocked: 1
     party_order: 6
   animator: {fileID: 0}
   battle_sprite: {fileID: 0}
+  attacked_pos_offset: {x: 0, y: 0, z: 1}
+  damage_value_offset: {x: 0, y: 0.75, z: 0}
+  is_opponent: 0
+  is_dead: 0
+  die_with_sprite: 0
   is_being_switched: 0
+--- !u!95 &8827357385238576798
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2197084639042559150}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

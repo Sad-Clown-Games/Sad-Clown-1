@@ -44,6 +44,7 @@ public struct Character_Stats{
     public int def;
     public int luc;
     public int spd;
+    public float crit_dmg;
     public string[] status_effects;
     public Saved_Equipment equipment;
     public string[] skills;

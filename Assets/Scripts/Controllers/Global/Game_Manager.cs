@@ -45,10 +45,11 @@ public class Game_Manager : MonoBehaviour
             //This instance becomes the single instance available
             Instance = this;
         }
+        Startup();
     }
 
     void Start(){
-        Startup();
+        
     }
 
     public void Startup(){

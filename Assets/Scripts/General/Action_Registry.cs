@@ -9,6 +9,7 @@ public  class Action_Registry : MonoBehaviour
 
     //list of all items in game
     public  List<Item> item_registry;
+    public  Party_Switch party_switch;
 
     public  void Register_Attack(Attack attack){
         attack_registry.Add(attack);
@@ -56,4 +57,7 @@ public  class Action_Registry : MonoBehaviour
         return return_item;
     }
 
+    public Party_Switch Get_Switch(){
+        return party_switch;
+    }
 }

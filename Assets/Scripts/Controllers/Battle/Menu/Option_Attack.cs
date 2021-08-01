@@ -6,7 +6,7 @@ public class Option_Attack : Battle_Option
 {
     // Start is called before the first frame update
 
-    Animator animator;
+    //Animator animator;
     void Start()
     {
         animator = GetComponent<Animator>();        

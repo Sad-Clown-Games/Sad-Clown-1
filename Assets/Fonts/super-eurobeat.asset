@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: super-eurobeat
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1260717683
   material: {fileID: 1344952876007341174}
-  materialHashCode: 0
+  materialHashCode: 1242272243
   m_Version: 1.1.0
   m_SourceFontFileGUID: 5fc0ae8f3afb8774f9194cfea49092eb
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 5fc0ae8f3afb8774f9194cfea49092eb, type: 3}

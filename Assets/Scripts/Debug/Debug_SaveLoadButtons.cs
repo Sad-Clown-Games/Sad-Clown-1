@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEditor;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(Game_Manager))]
 public class SomeScriptEditor : Editor 
 {
@@ -22,3 +23,5 @@ public class SomeScriptEditor : Editor
          }
     }
  }
+
+ #endif

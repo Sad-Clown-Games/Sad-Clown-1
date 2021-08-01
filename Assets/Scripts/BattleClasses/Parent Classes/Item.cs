@@ -13,5 +13,5 @@ abstract public class Item : Action
     #else
         [UnityEngine.RuntimeInitializeOnLoadMethod]
     #endif
-    override abstract public void Do_Action(Combatant actor, List<Combatant> targets);
+    override abstract public void Do_Action();
 }

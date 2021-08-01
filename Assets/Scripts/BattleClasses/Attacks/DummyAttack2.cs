@@ -16,10 +16,17 @@ public class DummyAttack2 : Attack
         
     }
 
-    public override void Do_Action(Combatant actor, List<Combatant> targets)
+        public override void Stage_Action()
     {
-        Debug.Log(actor.combatant_name + "Is attacking ");
-        Debug.Log(targets);
+        
+    }
+
+    public override void Do_Action()
+    {
+        Debug.Log(cur_actor.combatant_name + "Is attacking ");
+        Debug.Log(cur_targets);
+        Debug.Log("With " + attack_name);
+        Debug.Log("With Base Damage:" + damage);
         Debug.Log("With " + attack_name);
         Debug.Log("With Base Damage:" + damage);
 
