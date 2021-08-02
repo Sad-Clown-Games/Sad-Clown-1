@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutSceneManagement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CutScene
     {
-        
+        public string SceneName;
+
+
+        public CutScene(string name)
+        {
+            SceneName = name;
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public class ManageScenes
     {
-        
+        public void changescene(CutScene Scene)
+        {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(Scene.SceneName));
+        }
+        public void loadscene(CutScene Scene)
+        {
+            SceneManager.LoadSceneAsync(Scene.SceneName);
+        }
+        public void unloadscene(CutScene Scene)
+        {
+            SceneManager.UnloadSceneAsync(Scene.SceneName);
+        }
+        public void loadflags()
+        {
+        }
     }
+
 }

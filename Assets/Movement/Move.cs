@@ -9,7 +9,8 @@ public class Move : MonoBehaviour
     public CharacterController controller;
     public float speed = 6f;
     Vector3 falling;
-    
+    //bool qKeyIsPressed = Input.GetKey(KeyCode.Q);
+    //bool eKeyIsPressed = Input.GetKey(KeyCode.E);
     void Start()
     {
         
@@ -28,5 +29,7 @@ public class Move : MonoBehaviour
         }
         falling.y = -1f;
         controller.Move(falling);
+
+
     }
 }
