@@ -8,6 +8,7 @@ public class Target_Select_Controller : OptionController
      public Battle_Controller battle_controller;
      public Cinemachine.CinemachineVirtualCamera targeting_camera;
      public GameObject selection_arrow;
+     public GameObject special_select_menu;
 
      public void Set_Combatants_For_Attack_Skill(Combatant actor){
           options = battle_controller.Get_All_Combatants_Enemy_First();
@@ -31,5 +32,12 @@ public class Target_Select_Controller : OptionController
      }
      public void Show_Arrow(){
           selection_arrow.SetActive(true);
+     }
+
+     public void Hide_SpecialSelect(){
+          special_select_menu.SetActive(false);
+     }
+     public void Show_SpecialSelect(){
+          special_select_menu.SetActive(true);
      }
 }

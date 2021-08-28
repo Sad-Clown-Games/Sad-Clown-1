@@ -16,13 +16,16 @@ public class Battle_Menu : MonoBehaviour
     public Skill_Option_Controller skill_options;
     //public ItemOptionController cur_options;
     public Target_Select_Controller target_options;
+    public SpecialTargetActionController special_action_options;
     public Item_Option_Controller item_options;
-    public Party_Switch_Controller switch_options;
+    public Party_Switch_Controller swap_options;
     public int cur_option_idx;
     public int cur_action_idx;
+    public int last_target_idx;
     public bool is_action_select_menu;
     public bool is_skill_select_menu;
     public bool is_target_select_menu;
+    public bool is_specialaction_select_menu;
     public bool is_item_select_menu;
     public bool is_selecting_target;
     public bool is_switching_party;
@@ -32,7 +35,8 @@ public class Battle_Menu : MonoBehaviour
     public GameObject target_select_menu;
     public GameObject item_select_menu;
     public GameObject cur_selection_menu;
-    public GameObject switch_select_menu;
+    public GameObject swap_select_menu;
+    public GameObject specialaction_select_menu;
 
     public Battle_Controller battle_controller;
 
@@ -40,20 +44,23 @@ public class Battle_Menu : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera skill_select_camera;
     public Cinemachine.CinemachineVirtualCamera item_select_camera;
     public Cinemachine.CinemachineVirtualCamera target_select_camera;
-    public Cinemachine.CinemachineVirtualCamera switch_select_camera;
+    public Cinemachine.CinemachineVirtualCamera swap_select_camera;
 
     public Player_Combatant cur_combatant;
+    public List<Combatant> current_targets = new List<Combatant>();
 
     private bool holding_horiz;
     private bool holding_vert;
     private string return_menu; //keep track of the menu we're returning to when we target
+    public bool menus_active;
 
 
     // Start is called before the first frame update
     void Start()
     {
         target_options.Hide_Arrow();
-        switch_options.Hide_Arrow();
+        swap_options.Hide_Arrow();
+        //target_options.Hide_SpecialSelect();
     }
 
     // Update is called once per frame
@@ -66,25 +73,31 @@ public class Battle_Menu : MonoBehaviour
         float vert = Input.GetAxisRaw("Vertical");
         bool input_select = Input.GetKeyDown("x");
         bool input_cancel = Input.GetKeyDown("c");
-        if(is_action_select_menu){
-            if(CinemachineCore.Instance.IsLive(action_select_camera))
-                Action_Select_Menu(horiz,vert,input_select,input_cancel);
-        }
-        else if(is_item_select_menu){
-            if(CinemachineCore.Instance.IsLive(item_select_camera))
-                Item_Select_Menu(horiz,vert,input_select,input_cancel);
-        }
-        else if(is_skill_select_menu){
-            if(CinemachineCore.Instance.IsLive(skill_select_camera))
-                Skill_Select_Menu(horiz,vert,input_select,input_cancel);
-        }
-        else if(is_target_select_menu){
-            if(CinemachineCore.Instance.IsLive(target_select_camera))
-                Target_Select_Menu(horiz,vert,input_select,input_cancel);
-        }
-        else if(is_switching_party){
-            if(CinemachineCore.Instance.IsLive(switch_select_camera))
-                Switch_Select_Menu(horiz,vert,input_select,input_cancel);
+        if(menus_active){
+            //easy af to add an assload of menus if you pleases
+            if(is_action_select_menu){
+                if(CinemachineCore.Instance.IsLive(action_select_camera))
+                    Action_Select_Menu(horiz,vert,input_select,input_cancel);
+            }
+            else if(is_item_select_menu){
+                if(CinemachineCore.Instance.IsLive(item_select_camera))
+                    Item_Select_Menu(horiz,vert,input_select,input_cancel);
+            }
+            else if(is_skill_select_menu){
+                if(CinemachineCore.Instance.IsLive(skill_select_camera))
+                    Skill_Select_Menu(horiz,vert,input_select,input_cancel);
+            }
+            else if(is_specialaction_select_menu){
+                SpecialAction_Select_Menu(horiz,vert,input_select,input_cancel);
+            }
+            else if(is_target_select_menu){
+                if(CinemachineCore.Instance.IsLive(target_select_camera))
+                    Target_Select_Menu(horiz,vert,input_select,input_cancel);
+            }
+            else if(is_switching_party){
+                if(CinemachineCore.Instance.IsLive(swap_select_camera))
+                    Swap_Select_Menu(horiz,vert,input_select,input_cancel);
+            }
         }
 
         if(vert == 0)
@@ -95,6 +108,9 @@ public class Battle_Menu : MonoBehaviour
 
     //greys out options based on the inputted actor
     public void Grey_Out_Options(Player_Combatant actor){
+        action_options.options[2].UnGray();
+        action_options.options[3].UnGray();
+        action_options.options[4].UnGray();
         if(actor.attacks.Count < 1)
             action_options.options[2].Gray_Out();
         if(Game_Manager.Instance.player_data.items.Count < 1)
@@ -429,24 +445,59 @@ public class Battle_Menu : MonoBehaviour
             
         }
         if(select){
-            target_options.Hide_Arrow();
-            target_select_camera.Priority = 0;
             is_target_select_menu = false;
-            List<Combatant> targets = new List<Combatant>();
-            targets.Add(target_options.options[cur_option_idx]);
-            battle_controller.Confirm_Action(targets,cur_action_idx);
+            current_targets.Add(target_options.options[cur_option_idx]);
+            if(current_targets.Count <= 1 && current_targets[0].special_action != null){
+                Target_To_SpecialAction(current_targets[0].special_action); //pass in action
+            }
+            else{
+                target_select_camera.Priority = 0;
+                target_options.Hide_Arrow();
+                battle_controller.Confirm_Action(current_targets,cur_action_idx);
+            }
         }
     }
 
-    public void Switch_Select_Menu(float horiz, float vert, bool select, bool cancel){
+    public void SpecialAction_Select_Menu(float horiz, float vert, bool select, bool cancel){
+        int prev_option_index = cur_option_idx;
+         if(!holding_vert){
+                if(vert > 0 && cur_option_idx < special_action_options.Get_Option_Count()-1){
+                    cur_option_idx += 1;
+                    holding_vert = true;
+                }
+                if(vert < 0 && cur_option_idx > 0){
+                    cur_option_idx -= 1;
+                    holding_vert = true;
+                }
+         }
+        special_action_options.Hover_Option(cur_option_idx);
+        if(cur_option_idx != prev_option_index)
+            special_action_options.UnHover_Option(prev_option_index);
+        if(cancel){
+            special_action_options.UnHover_Option(cur_option_idx);
+            SpecialAction_To_Target();
+        }
+        if(select){
+            special_action_options.UnHover_Option(cur_option_idx);
+            target_options.Hide_Arrow();
+            target_options.Hide_SpecialSelect();
+            target_select_camera.Priority = 0;
+            is_specialaction_select_menu = false;
+            //use old targets
+            battle_controller.Init_CombatAction(special_action_options.options[cur_option_idx].attack); //set a new action up
+            battle_controller.Confirm_Action(current_targets,cur_action_idx);
+        }
+    }
+
+    public void Swap_Select_Menu(float horiz, float vert, bool select, bool cancel){
         if(!holding_horiz){
-            if(horiz > 0 && cur_option_idx < switch_options.options.Count-1){
+            if(horiz > 0 && cur_option_idx < swap_options.options.Count-1){
                 int last_idx = cur_option_idx;
                 cur_option_idx++;
-                while(switch_options.options[cur_option_idx].is_being_switched && cur_option_idx < switch_options.options.Count-1){
+                while(swap_options.options[cur_option_idx].is_being_switched && cur_option_idx < swap_options.options.Count-1){
                     cur_option_idx++;
                 }
-                if(switch_options.options[cur_option_idx].is_being_switched){
+                if(swap_options.options[cur_option_idx].is_being_switched){
                     cur_option_idx = last_idx;
                             //go back because there are no valid switching targets
                 }
@@ -455,19 +506,19 @@ public class Battle_Menu : MonoBehaviour
             if(horiz < 0 && cur_option_idx > 0){
                 int last_idx = cur_option_idx;
                 cur_option_idx--;
-                while(switch_options.options[cur_option_idx].is_being_switched && cur_option_idx > 0){
+                while(swap_options.options[cur_option_idx].is_being_switched && cur_option_idx > 0){
                     cur_option_idx--;
                 }
-                if(switch_options.options[cur_option_idx].is_being_switched){
+                if(swap_options.options[cur_option_idx].is_being_switched){
                     cur_option_idx = last_idx;
                             //go back because there are no valid switching targets
                 }
                 holding_horiz = true;
             }
          }
-        switch_options.Set_Target(switch_options.options[cur_option_idx]);
+        swap_options.Set_Target(swap_options.options[cur_option_idx]);
         if(select){
-            switch_options.Hide_Arrow();
+            swap_options.Hide_Arrow();
             
             //Add 4 to offset the active party members
             battle_controller.Switch_Combatant(cur_option_idx+4);
@@ -482,7 +533,7 @@ public class Battle_Menu : MonoBehaviour
         action_select_camera.Priority = 99;
         skill_select_camera.Priority = 0;
         target_select_camera.Priority = 0;
-        switch_select_camera.Priority = 0;
+        swap_select_camera.Priority = 0;
         is_target_select_menu = false;
         is_item_select_menu = false;
         is_selecting_target = false;
@@ -491,6 +542,8 @@ public class Battle_Menu : MonoBehaviour
         //skill_select_menu.SetActive(false);
         //set reference
         cur_combatant = combatant;
+        current_targets.Clear();
+        Grey_Out_Options(cur_combatant);
         //Enable menus
         root_menu.SetActive(true);
         action_select_menu.SetActive(true);
@@ -608,30 +661,53 @@ public class Battle_Menu : MonoBehaviour
         cur_option_idx = 0;
     }
 
+    public void SpecialAction_To_Target(){
+        current_targets.Clear(); //clear targets so we can select again.
+        target_options.Hide_SpecialSelect();
+        target_options.Show_Arrow();
+        cur_selection_menu = target_select_menu;
+        is_specialaction_select_menu = false;
+        is_target_select_menu = true;
+        cur_option_idx = last_target_idx;
+    }
+    public void Target_To_SpecialAction(Action special){
+        target_options.Show_SpecialSelect(); //setactive
+        List<Action> s_actions = new List<Action>();
+        s_actions.Add(special);
+        s_actions.Add(battle_controller.cur_selected_action.action);
+        special_action_options.actions = s_actions;
+        special_action_options.Set_Options(s_actions);
+        cur_selection_menu = specialaction_select_menu;
+        is_specialaction_select_menu = true;
+        is_target_select_menu = false;
+        last_target_idx = cur_option_idx;
+        cur_option_idx = 0; //we need to make sure the option idx is the same
+    }
+
     public void Action_To_Switch(){
         action_select_menu.SetActive(false);
-        switch_select_camera.Priority = 99;
+        swap_select_camera.Priority = 99;
         action_select_camera.Priority = 0;
-        cur_selection_menu = switch_select_menu;
+        cur_selection_menu = swap_select_menu;
         is_switching_party = true;
         is_action_select_menu = false;
-        switch_options.Set_Reserve_Characters();
+        swap_options.Set_Reserve_Characters();
         cur_option_idx = 0;
-        while(switch_options.options[cur_option_idx].is_being_switched && cur_option_idx < switch_options.options.Count){
+        while(swap_options.options[cur_option_idx].is_being_switched && cur_option_idx < swap_options.options.Count){
             cur_option_idx++;
         }
-        if(switch_options.options[cur_option_idx].is_being_switched){
+        if(swap_options.options[cur_option_idx].is_being_switched){
             Switch_To_Action();
             //go back because there are no valid switching targets
         }
-        switch_options.Set_Target(switch_options.options[cur_option_idx]);
+        swap_options.Set_Target(swap_options.options[cur_option_idx]);
     }
     
 
     public void Switch_To_Action(){
-        switch_options.Hide_Arrow();
+        swap_options.Hide_Arrow();
         action_select_menu.SetActive(true);
-        switch_select_camera.Priority = 0;
+        swap_select_camera.Priority = 0;
         action_select_camera.Priority = 99;
         cur_selection_menu = action_select_menu;
         is_action_select_menu = true;
@@ -705,7 +781,7 @@ public class Battle_Menu : MonoBehaviour
         target_select_camera.Priority = 0;
         item_select_camera.Priority = 0;
         skill_select_camera.Priority = 0;
-        switch_select_camera.Priority = 0;
+        swap_select_camera.Priority = 0;
         action_select_camera.Priority = 0;
     }
 

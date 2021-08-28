@@ -11,4 +11,5 @@ public abstract class Enemy_Combatant : Combatant
 
     //
     abstract public CombatAction Run_AI(List<Combatant> player_party, List<Combatant> enemy_party );
+
 }

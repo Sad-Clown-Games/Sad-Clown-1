@@ -25,9 +25,9 @@ public class DummyAttack2 : Attack
     {
         Debug.Log(cur_actor.combatant_name + "Is attacking ");
         Debug.Log(cur_targets);
-        Debug.Log("With " + attack_name);
+        Debug.Log("With " + action_name);
         Debug.Log("With Base Damage:" + damage);
-        Debug.Log("With " + attack_name);
+        Debug.Log("With " + action_name);
         Debug.Log("With Base Damage:" + damage);
 
     }

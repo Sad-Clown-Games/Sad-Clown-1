@@ -60,9 +60,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idle_cam: {fileID: 0}
-  combatant_name: 3
+  camera_transform: {fileID: 0}
+  billboarder: {fileID: 0}
+  combatant_name: Rodgrigo
+  portrait: {fileID: -2436517738755024721, guid: 5bc90b4c54698694b93a4c68498d4c63, type: 3}
+  debug: 0
   default_attack: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
   default_guard: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  special_action: {fileID: 0}
   target_arrow_location: {x: 0, y: 1, z: 0}
   pawn: {fileID: 0}
   pawn_prefab: {fileID: 5696637495109534840, guid: af7168d3035d2f340babcb9057deadd9, type: 3}
@@ -72,7 +77,7 @@ MonoBehaviour:
   - {fileID: 472025339681209205, guid: ebe7fd65af7b9344da8b2c7bef9a01a8, type: 3}
   - {fileID: 513778521953757694, guid: a95f3aa4ec37f3146ad18aeca71d2a02, type: 3}
   menu_pos: {x: 0, y: -0.5, z: 3.82}
-  offset: {x: 0, y: 0.5, z: -4.2}
+  offset: {x: 0, y: 0, z: 0}
   stats:
     max_hp: 10
     max_mp: 10
@@ -92,12 +97,21 @@ MonoBehaviour:
     is_unlocked: 1
     party_order: 2
   animator: {fileID: 0}
-  battle_sprite: {fileID: 0}
+  battle_sprite: {fileID: -2436517738755024721, guid: 5bc90b4c54698694b93a4c68498d4c63, type: 3}
   attacked_pos_offset: {x: 0, y: 0, z: 1}
   damage_value_offset: {x: 0, y: 0.75, z: 0}
+  stage_pos_offset: {x: 0, y: 0, z: 0}
   is_opponent: 0
   is_dead: 0
   die_with_sprite: 0
+  b_anim_walk: 0
+  b_anim_spec: 0
+  b_anim_dying: 0
+  b_anim_casting: 0
+  b_anim_attk: 0
+  b_anim_hurt: 0
+  b_anim_idle: 0
+  b_anim_dead: 0
   is_being_switched: 0
 --- !u!95 &-1934438681877980826
 Animator:

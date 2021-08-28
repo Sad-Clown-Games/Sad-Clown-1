@@ -43,8 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae90e71783bf18449aef4db55caff3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active_idx: 0
-  reserve_idx: 0
-  attack_name: lorem
+  action_name: lorem
   damage: 0
   description: ipsem
+  is_flipped: 0
+  active_idx: 0
+  reserve_idx: 0
+  action_idx: 0
+  is_active: 0
+  speed: -9999
+  next_action: {fileID: 0}
+  cur_actor: {fileID: 0}
+  controller: {fileID: 0}
+  cur_targets: []
+  damage_display: {fileID: 0}

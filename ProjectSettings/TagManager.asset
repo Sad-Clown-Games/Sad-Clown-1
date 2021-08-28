@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Battle_Menu_Attack
+  - battle_text
+  - BattleController
   layers:
   - Default
   - TransparentFX
@@ -41,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Terrain
+    uniqueID: 1966888963
     locked: 0

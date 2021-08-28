@@ -33,4 +33,7 @@ public class Battle_Option : MonoBehaviour
     public void Gray_Out(){
         sprite.color = Color.gray;
     }
+    public void UnGray(){
+        sprite.color = Color.white;
+    }
 }

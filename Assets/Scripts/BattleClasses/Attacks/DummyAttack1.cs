@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -7,28 +7,9 @@ public class DummyAttack1 : Attack
 {
     // Start is called before the first frame update
 
-    public Vector3 Camera_1_Start_Pos;
-    public Vector3 Camera_1_End_Pos;
-    public Vector3 Actor_Original_Pos;
-    public Vector3 Target_Original_Pos;
-    public Vector3 Actor_Start_Pos;
-    public Vector3 Target_Start_Pos;
-    public Vector3 Actor_End_Pos;
-    public Vector3 Stage_Location;
-    public camera_set set;
-    public Vector3 camera1_offset;
-    public bool wait_done;
-    public bool movement_done;
-    public bool actor_animation_done;
-    public bool target_animation_done;
-    public bool damage_shown;
-    private float timer = 0;
-    public float hang_time = 1.5f;
-    public float wait_time = 0.5f;
-    public bool crit = false;
     void Start()
     {
-
+        controller = GameObject.FindGameObjectWithTag("BattleController").GetComponent<Battle_Controller>();
     }
 
     // Update is called once per frame
@@ -36,37 +17,40 @@ public class DummyAttack1 : Attack
     {
         //simple move to location then leave
         if(is_active){
-            if(!wait_done ){
+            if(!wait_done){
                 timer += Time.deltaTime;
                 if(timer > wait_time){
                     timer = 0;
                     wait_done = true;
                 }
             }
-            if(wait_done && !movement_done)
+            if(wait_done && !movement_done){
+                cur_actor.AnimMove();
                 cur_actor.Move_Pawn(Actor_End_Pos,speed);
+            }
             if(cur_actor.Pawn_At_Loc(Actor_End_Pos)){
                 //normally we'd do an animaton here, and then have a condition on that animation being done,
                 //or switch to another camera and then set some bools
                 movement_done = true;
             }
             if(movement_done && !actor_animation_done){
-                cur_actor.Get_Pawn_Animator().Play("BasicAttack");
+                cur_actor.AnimAttack();
                 actor_animation_done = true;
             }
             if(actor_animation_done){
                 if(!target_animation_done){
-                    cur_targets[0].Get_Pawn_Animator().Play("NormalHurt");
                     set.cameras[0].m_LookAt = cur_targets[0].Get_Pawn_Transform();
                     int final_damage = Calculate_Damage();
-                    cur_targets[0].Take_Damage(final_damage);//final_damage);
+                    cur_targets[0].Take_Damage(final_damage,controller); //animation is done here, since they may die.
                     Spawn_Damage_Counter(final_damage);
-
                     target_animation_done = true;
                 }
                 timer += Time.deltaTime;
             }
-            if(timer > hang_time){
+            if(target_animation_done && timer > hang_time){
+                cur_actor.AnimIdle();
+                if(!cur_targets[0].is_dead)
+                    cur_targets[0].AnimIdle();
                 timer = 0;
                 Exit_Action();
             }
@@ -78,14 +62,19 @@ public class DummyAttack1 : Attack
     {
         Debug.Log(cur_actor.combatant_name + "Is attacking ");
         Debug.Log(cur_targets);
-        Debug.Log("With " + attack_name);
+        Debug.Log("With " + action_name);
         Debug.Log("With Base Damage:" + damage);
+        controller.ShowAttackText(TextHelper.GenerateBattleString(
+            cur_targets[0].combatant_name,
+            cur_actor.combatant_name,
+            description));
         is_active = true;
         //camera_1.transform.position = actor.Get_Pawn_Transform().position + camera1_offset;
     }
 
     public void Exit_Action(){
         //return everything
+        controller.HideAttackText();
         cur_actor.Get_Pawn_Transform().position = Actor_Original_Pos;
         cur_targets[0].pawn.transform.position =  Target_Original_Pos;
         is_active = false;
@@ -113,10 +102,11 @@ public class DummyAttack1 : Attack
         Actor_Original_Pos = cur_actor.Get_Pawn_Transform().position;
         Target_Original_Pos = cur_targets[0].Get_Pawn_Transform().position;
         //set starting positions
-        cur_actor.Get_Pawn_Transform().position = Actor_Start_Pos + Stage_Location;
-        cur_targets[0].Get_Pawn_Transform().position = Target_Start_Pos + Stage_Location; //set target pos
+        cur_actor.Get_Pawn_Transform().position = Actor_Start_Pos + Stage_Location + cur_actor.Get_Stage_Pos_Offset();
+        cur_targets[0].Get_Pawn_Transform().position = Target_Start_Pos + Stage_Location+ cur_targets[0].Get_Stage_Pos_Offset(); //set target pos
         //set movement location
         Actor_End_Pos = cur_targets[0].Get_Attacked_Pos_Offset();
+        Actor_End_Pos.y = cur_actor.Get_Pawn_Transform().position.y; //make sure we dont move vertically
         transform.position = Stage_Location;
     }
 
@@ -135,30 +125,12 @@ public class DummyAttack1 : Attack
         return calc_damage;
     }
 
-    public void Die(){
-        Destroy(this.gameObject);
-    }
-
-    override public void Reset_Cameras(){
-        set.cameras[0].m_Priority = 0;
-    }
     override public void Set_Camera_Order(int x){
         //sets up the cameras so that they change in the right order;
         set.cameras[0].m_Priority = x;
     }
 
-    public void Spawn_Damage_Counter(int value){
-        Battle_Number_Display cur = Instantiate(damage_display,cur_targets[0].Get_Damage_Display_Offset(),transform.rotation).GetComponent<Battle_Number_Display>();
-        cur.Set_Value(value);
-        cur.Set_Damage_Gradient();
 
-    }
 
-    public void Swap_Actor_Pos(){
-        var tempPos = Actor_Start_Pos;
-        Actor_Start_Pos = Target_Start_Pos;
-        Target_Start_Pos = tempPos;
-         
-    }
     
 }

@@ -38,7 +38,7 @@ public class Battle_Option_Item : MonoBehaviour
     public void Activate(Item i){
         is_active = true;
         this.item = i;
-        text.text = i.item_name;
+        text.text = i.action_name;
         description = i.description;
         this.gameObject.SetActive(true);
     }

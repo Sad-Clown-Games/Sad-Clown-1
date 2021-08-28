@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Party_Switch : Action
 {
-    // Start is called before the first frame update
-    public int damage = 0;
-    public string description = "ipsem";
     //because we're setting up to just queue actions,
 
     private void Awake() {

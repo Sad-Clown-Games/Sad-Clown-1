@@ -4,9 +4,6 @@ using UnityEngine;
 
 abstract public class Item : Action
 {
-    public string item_name = "lorem";
-    public int damage = 0;
-    public string description = "ipsem";
     
     #if UNITY_EDITOR
         [UnityEditor.InitializeOnLoadMethod]

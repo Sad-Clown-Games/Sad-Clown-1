@@ -19,7 +19,7 @@ public class DummyItem1 : Item
     {
         Debug.Log(cur_actor.combatant_name + "Is attacking ");
         Debug.Log(cur_targets);
-        Debug.Log("With " + item_name);
+        Debug.Log("With " + action_name);
         Debug.Log("With Base Damage:" + damage);
 
     }

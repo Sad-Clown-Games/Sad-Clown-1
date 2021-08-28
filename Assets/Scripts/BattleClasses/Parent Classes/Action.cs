@@ -6,7 +6,10 @@ using UnityEngine;
 abstract public class Action : MonoBehaviour
 {
     //have to have these since we need to keep track of what characters are being switched and undo them
-    public string action_name;
+    public string action_name= "lorem";
+    public int damage = 0;
+    public string description = "ipsem";
+
     public bool is_flipped = false;
     public int active_idx; //idx of the actor
     public int reserve_idx; //idx of target
@@ -18,7 +21,6 @@ abstract public class Action : MonoBehaviour
     public Battle_Controller controller;
     public List<Combatant> cur_targets;
     public GameObject damage_display;
-
     abstract public void Do_Action();
 
     abstract public void Reset_Cameras();

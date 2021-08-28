@@ -13,7 +13,7 @@ public class Battle_Option_Skill : MonoBehaviour
     public GameObject right_adjacent;
     public GameObject up_adjacent;
     public GameObject down_adjacent;
-    public Attack attack;
+    public Action attack;
     public string description;
     public TMPro.TMP_Text text;
     public bool is_active;
@@ -35,11 +35,11 @@ public class Battle_Option_Skill : MonoBehaviour
 
     }
 
-    public void Activate(Attack attk){
+    public void Activate(Action attk){
         is_active = true;
         this.gameObject.SetActive(true);
         attack = attk;
-        text.text = attack.attack_name;
+        text.text = attack.action_name;
         description = attack.description;
     }
     public void Deactivate(){
@@ -47,5 +47,12 @@ public class Battle_Option_Skill : MonoBehaviour
         description = "null";
         attack = null;
         this.gameObject.SetActive(false);
+    }
+
+    public void Hover(){
+        hovered = true;
+    }
+    public void UnHover(){
+        hovered = false;
     }
 }

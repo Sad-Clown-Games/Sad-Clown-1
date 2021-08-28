@@ -32,6 +32,8 @@ public class Battle_Controller : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera party_cam;
     public bool won = false;
     public bool lost = false;
+    public Vector3 party_location;
+    public BattleUIController UIController;
 
     // Start is called before the first frame update
     void Start()
@@ -129,6 +131,7 @@ public class Battle_Controller : MonoBehaviour
         if(cur_cp_idx < active_player_combatants.Count-1)
             NextPlayerCombatant();
         else{
+            battle_menu.menus_active = false; //disable input to the battle_menu
             Calculate_Enemy_Attacks();
             Execute_Combat_Actions();
         }
@@ -221,6 +224,7 @@ public class Battle_Controller : MonoBehaviour
         Set_Active_Pawns();
         Set_Reserve_Pawns();
         cur_selected_player = active_player_combatants[cur_cp_idx];
+        battle_menu.menus_active = true;
         battle_menu.Start_Selecting(active_player_combatants[cur_cp_idx]);
     }
 
@@ -235,9 +239,10 @@ public class Battle_Controller : MonoBehaviour
             a.pawn = cur;
         }
         for(int i = 0; i < pawns.Count; i++){
-            Vector3 offset = active_player_combatants[i].offset;
+            Vector3 offset = active_player_combatants[i].offset + party_location;
             offset.x = (i*2.15f) - 3.5f;
             pawns[i].transform.position = offset;
+            UIController.bannerController.GetPartyMemberByIdx(i).Fill_Combatant_Info(active_player_combatants[i]);
         }
     }
 
@@ -252,9 +257,9 @@ public class Battle_Controller : MonoBehaviour
             a.pawn = cur;
         }
         for(int i = 0; i < reserve_pawns.Count; i++){
-            Vector3 offset = reserve_player_combatants[i].offset;
+            Vector3 offset = reserve_player_combatants[i].offset + party_location;
             offset.x = -((i*2.15f) - 3.5f);
-            offset.z -= 4;
+            offset.z -= 3;
             reserve_pawns[i].transform.position = offset;
         }
     }
@@ -289,5 +294,11 @@ public class Battle_Controller : MonoBehaviour
         won = true; //accept input in update based on won
     }
 
-
+    public void ShowAttackText(string text){
+        UIController.Raise_Text(text);
+    }
+    
+    public void HideAttackText(){
+        UIController.Hide_Text();
+    }
 }
