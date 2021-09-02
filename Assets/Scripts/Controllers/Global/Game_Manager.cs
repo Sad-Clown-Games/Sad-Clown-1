@@ -28,6 +28,7 @@ public class Game_Manager : MonoBehaviour
     public GameObject placeholder7;
     public GameObject placeholder8;
     public Action_Registry action_registry;
+    public Input_Controller input_controller;
     //Object containing all helper functions script
 
     public List<Player_Character> party_list;

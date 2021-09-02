@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
 
     private float turnSpeedMultiplier;
     private float speed = 0f;
+    public float max_speed = 2f;
     private float direction = 0f;
     private bool isSprinting = false;
     private Animator anim;
@@ -22,6 +23,7 @@ public class CharacterMovement : MonoBehaviour
     private Quaternion freeRotation;
     private Camera mainCamera;
     private float velocity;
+    private float lastSpeed;
 
 	// Use this for initialization
 	void Start ()
@@ -43,8 +45,9 @@ public class CharacterMovement : MonoBehaviour
             speed = Mathf.Abs(input.x) + Mathf.Abs(input.y);
 
         speed = Mathf.Clamp(speed, 0f, 1f);
-        speed = Mathf.SmoothDamp(anim.GetFloat("Speed"), speed, ref velocity, 0.1f);
+        //speed = Mathf.SmoothDamp(lastSpeed, speed, ref velocity, 0.1f);
         anim.SetFloat("Speed", speed);
+        lastSpeed = speed;
 
 	    if (input.y < 0f && useCharacterForward)
             direction = input.y;

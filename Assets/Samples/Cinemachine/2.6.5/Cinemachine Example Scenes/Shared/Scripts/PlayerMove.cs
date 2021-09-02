@@ -71,25 +71,5 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Slerp(qA, qB, Damper.Damp(1, VelocityDamping, dt));
         }
 
-        // Process jump
-        if (m_currentJumpSpeed != 0)
-            m_currentJumpSpeed -= 10 * dt;
-        var p = transform.position;
-        p.y += m_currentJumpSpeed * dt;
-        if (p.y < m_restY)
-        {
-            p.y = m_restY;
-            m_currentJumpSpeed = 0;
-        }
-        transform.position = p;
-
-        if (Input.GetKeyDown(KeyCode.Space)){
-           // SpaceAction();
-        }
-        if (Input.GetKeyDown(KeyCode.Return)){
-           // EnterAction();
-        }
     }
-
-    public void Jump() { m_currentJumpSpeed += 10 * JumpTime * 0.5f; }
 }
