@@ -480,6 +480,7 @@ MonoBehaviour:
   action_name: ShrigmatoBasicAttack
   damage: 1
   description: '%a bashes %t with it''s head!'
+  battle_message: ipsem
   is_flipped: 0
   active_idx: 0
   reserve_idx: 0
@@ -495,8 +496,8 @@ MonoBehaviour:
   Camera_1_End_Pos: {x: 0, y: 0, z: 0}
   Actor_Original_Pos: {x: 0, y: 0, z: 0}
   Target_Original_Pos: {x: 0, y: 0, z: 0}
-  Actor_Start_Pos: {x: 0, y: 0.5, z: -2.5}
-  Target_Start_Pos: {x: 0, y: 0.5, z: 2.5}
+  Actor_Start_Pos: {x: 0, y: 0, z: -2.5}
+  Target_Start_Pos: {x: 0, y: 0, z: 2.5}
   Actor_End_Pos: {x: 0, y: 0, z: 0}
   Stage_Location: {x: 0, y: 0, z: 0}
   set: {fileID: 6381895136821454589}
@@ -509,6 +510,7 @@ MonoBehaviour:
   hang_time: 1.5
   wait_time: 0.5
   crit: 0
+  debug_on: 0
 --- !u!1 &9085556265955155682
 GameObject:
   m_ObjectHideFlags: 0

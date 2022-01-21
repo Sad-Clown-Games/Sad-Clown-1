@@ -11,20 +11,19 @@ Add this to every scene.
 public class Save_Load{
 
 
-    public void Save(Game_Data data){
+    public void Save(Game_Data data,string file_name){
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        FileStream file = File.Create(Application.persistentDataPath + "/" + file_name + ".save");
         bf.Serialize(file, data);
         file.Close();
         Debug.Log("Game Saved");
     }
 
-    public Game_Data Load(){
+    public Game_Data Load(string file_name){
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+        FileStream file = File.Open(Application.persistentDataPath + "/" + file_name + ".save", FileMode.Open);
         Game_Data data = (Game_Data)bf.Deserialize(file);
         file.Close();
-        Debug.Log("Game Save Deserialized");
         return data;
 
     }

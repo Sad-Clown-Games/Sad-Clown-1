@@ -60,10 +60,31 @@ public class DummyAttack1 : Attack
 
     public override void Do_Action()
     {
-        Debug.Log(cur_actor.combatant_name + "Is attacking ");
-        Debug.Log(cur_targets);
-        Debug.Log("With " + action_name);
-        Debug.Log("With Base Damage:" + damage);
+        if(cur_targets[0].is_dead){
+            controller.HideAttackText();
+            cur_actor.Get_Pawn_Transform().position = Actor_Original_Pos;
+            cur_targets[0].pawn.transform.position =  Target_Original_Pos;
+            is_active = false;
+            Reset_Cameras();
+            if(!Retarget()){ //if retargeting fails, which shouldn't happen since that would mean all are dead
+                Exit_Action();
+                return;
+            }
+            Stage_Action();
+        }
+        if(cur_actor.is_dead){
+            Exit_Action();
+            return;
+            //ruh roh;
+        }
+        if(debug_on){
+            Debug.Log(cur_actor.combatant_name + "Is attacking ");
+            Debug.Log(cur_targets);
+            Debug.Log("With " + action_name);
+            Debug.Log("With Base Damage:" + damage);
+        }
+        if(controller == null) //fecal funny moment #1
+            controller = GameObject.FindGameObjectWithTag("BattleController").GetComponent<Battle_Controller>();
         controller.ShowAttackText(TextHelper.GenerateBattleString(
             cur_targets[0].combatant_name,
             cur_actor.combatant_name,
@@ -79,13 +100,9 @@ public class DummyAttack1 : Attack
         cur_targets[0].pawn.transform.position =  Target_Original_Pos;
         is_active = false;
         Reset_Cameras();
-        if(controller.Is_Party_Dead() || controller.Is_Enemies_Dead()){
-                next_action = null;
-        }
-        if(next_action)
-            next_action.Stage_Action();
-        Die();
+        Next_Action();
     }
+
 
     public override void Stage_Action()
     {
@@ -106,7 +123,7 @@ public class DummyAttack1 : Attack
         cur_targets[0].Get_Pawn_Transform().position = Target_Start_Pos + Stage_Location+ cur_targets[0].Get_Stage_Pos_Offset(); //set target pos
         //set movement location
         Actor_End_Pos = cur_targets[0].Get_Attacked_Pos_Offset();
-        Actor_End_Pos.y = cur_actor.Get_Pawn_Transform().position.y; //make sure we dont move vertically
+        Actor_End_Pos.y = Actor_Original_Pos.y; //make sure we dont move vertically
         transform.position = Stage_Location;
     }
 
@@ -121,7 +138,9 @@ public class DummyAttack1 : Attack
             calc_damage = Mathf.RoundToInt(calc_damage * cur_actor.stats.crit_dmg);
             Debug.Log("Crit!!");
         }
-        Debug.Log("Does Damage:" + calc_damage);
+        if(debug_on){
+            Debug.Log("Does Damage:" + calc_damage);
+        }
         return calc_damage;
     }
 

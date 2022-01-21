@@ -9,7 +9,7 @@ abstract public class Action : MonoBehaviour
     public string action_name= "lorem";
     public int damage = 0;
     public string description = "ipsem";
-
+    public string battle_message = "ipsem";
     public bool is_flipped = false;
     public int active_idx; //idx of the actor
     public int reserve_idx; //idx of target

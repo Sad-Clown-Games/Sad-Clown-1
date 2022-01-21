@@ -28,6 +28,9 @@ public class DummyItem1 : Item
     {
         
     }
+    public override void Do_Overworld_Action(){
+
+    }
 
     override public void Reset_Cameras(){
         return;

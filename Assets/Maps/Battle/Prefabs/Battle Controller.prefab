@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &638454786440310099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 638454786440310097}
+  - component: {fileID: 638454786440310096}
+  m_Layer: 0
+  m_Name: Battle Controller
+  m_TagString: BattleController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &638454786440310097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638454786440310099}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 638454786896940656}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &638454786440310096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638454786440310099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f884940e43147814d86ae050db482ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cur_cp_idx: 0
+  turn_count: 0
+  round_actions: []
+  cur_selected_action:
+    action: {fileID: 0}
+    targets: []
+    actor: {fileID: 0}
+    speed: 0
+    base_object: {fileID: 0}
+    is_started: 0
+  active_player_combatants: []
+  pawns: []
+  reserve_pawns: []
+  reserve_player_combatants: []
+  enemy_combatants:
+  - {fileID: 0}
+  cur_selected_player: {fileID: 0}
+  battle_menu: {fileID: 0}
+  pawn_prefab: {fileID: 1056625374564320127, guid: 5e92ab2438c00034ba8c599ff2b071a6, type: 3}
+  party_switch: {fileID: 0}
+  party_spacing: 1.25
+  executing_actions: []
+  action_base: {fileID: 0}
+  cur_executing_combat_action:
+    action: {fileID: 0}
+    targets: []
+    actor: {fileID: 0}
+    speed: 0
+    base_object: {fileID: 0}
+    is_started: 0
+  cur_executing_action: {fileID: 0}
+  is_executing_actions: 0
+  cur_executing_action_index: 0
+  party_cam: {fileID: 0}
+  won: 0
+  lost: 0
+  party_location: {x: 0, y: 0, z: -4.2}
+  UIController: {fileID: 0}
+  party_controller: {fileID: 0}
+  battle_started: 0
+  battle_end_items: []
+  battle_end_exp: 0
+  dialogue_started: 0
+  done_listing_items: 0
+  done_listing_levels: 0
+  set_won_flags: 0
+  win_dialogue_controller: {fileID: 0}
+  level_dialogue_controller: {fileID: 0}
+  item_dialogue_controller: {fileID: 0}
+  lose_dialogue_controller: {fileID: 0}
+  win_blackboard: {fileID: 0}
+  level_blackboard: {fileID: 0}
+  item_blackboard: {fileID: 0}
+  lose_blackboard: {fileID: 0}
+  transition: {fileID: 0}
+--- !u!1 &638454786896940659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 638454786896940656}
+  m_Layer: 0
+  m_Name: Party_Members
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &638454786896940656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638454786896940659}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 638454786440310097}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

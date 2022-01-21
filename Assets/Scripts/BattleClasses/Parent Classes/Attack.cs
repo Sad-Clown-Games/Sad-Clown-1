@@ -26,6 +26,7 @@ abstract public class Attack : Action
     public float wait_time = 0.5f;
     public bool crit = false;
     override abstract public void Do_Action();
+    public bool debug_on;
     
     public void Swap_Actor_Pos(){
         var tempPos = Actor_Start_Pos;
@@ -42,10 +43,30 @@ abstract public class Attack : Action
         Destroy(this.gameObject);
     }
 
+    public bool Retarget(){
+        foreach(Combatant c in controller.enemy_combatants){
+            if(!c.is_dead){
+                cur_targets[0] = c;
+                return true;
+            }
+        }
+            return false;
+    }
+
     override public void Reset_Cameras(){
         foreach(CinemachineVirtualCamera cam in set.cameras){
             cam.m_Priority = 0;
         }
+    }
+
+    //seperate method because swag
+    public void Next_Action(){
+        if(controller.Is_Party_Dead() || controller.Is_Enemies_Dead()){
+        next_action = null;
+        }
+        if(next_action)
+            next_action.Stage_Action();
+        Die();
     }
 
 }

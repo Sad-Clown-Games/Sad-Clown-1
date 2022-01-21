@@ -1,6 +1,9 @@
 {
     "name": "ParadoxNotion",
-    "references": [],
+    "rootNamespace": "",
+    "references": [
+        "Unity.TextMeshPro"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

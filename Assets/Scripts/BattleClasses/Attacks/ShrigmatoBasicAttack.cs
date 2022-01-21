@@ -59,6 +59,19 @@ public class ShrigmatoBasicAttack : Attack
 
     public override void Do_Action()
     {
+        if(cur_targets[0].is_dead){
+            cur_targets[0].pawn.transform.position = Target_Original_Pos; //reset dead target position
+            if(!Retarget()){ //if retargeting fails, which shouldn't happen since that would mean all are dead
+                Exit_Action();
+                return;
+            }
+            Stage_Action();
+        }
+        if(cur_actor.is_dead){
+            Exit_Action();
+            return;
+            //ruh roh;
+        }
         Debug.Log(cur_actor.combatant_name + "Is attacking ");
         Debug.Log(cur_targets);
         Debug.Log("With " + action_name);
@@ -66,7 +79,7 @@ public class ShrigmatoBasicAttack : Attack
         controller.ShowAttackText(TextHelper.GenerateBattleString(
             cur_targets[0].combatant_name,
             cur_actor.combatant_name,
-            description));
+            battle_message));
         is_active = true;
         //camera_1.transform.position = actor.Get_Pawn_Transform().position + camera1_offset;
     }
@@ -75,29 +88,32 @@ public class ShrigmatoBasicAttack : Attack
         //return everything
         controller.HideAttackText();
         cur_actor.Get_Pawn_Transform().position = Actor_Original_Pos;
-        cur_targets[0].pawn.transform.position =  Target_Original_Pos;
+        cur_targets[0].pawn.transform.position = Target_Original_Pos;
         is_active = false;
         Reset_Cameras();
-        if(controller.Is_Party_Dead() || controller.Is_Enemies_Dead()){
-                next_action = null;
-        }
-        if(next_action)
-            next_action.Stage_Action();
-        Die();
+        Next_Action();
     }
 
     public override void Stage_Action()
     {
-        //set camerass
-        set.cameras[0].gameObject.SetActive(true); 
-        set.cameras[0].m_LookAt = cur_actor.Get_Pawn_Transform();
-        set.cameras[0].m_Follow = cur_actor.Get_Pawn_Transform();
-        set.cameras[0].m_Priority = 101; 
+        Stage_Cameras();
         if(cur_actor.is_opponent){
             set.Flip_Set();
             Swap_Actor_Pos();
         }
-        //store original positions
+        Stage_Locations();
+    }
+
+    private void Stage_Cameras(){
+                //set camerass
+        set.cameras[0].gameObject.SetActive(true); 
+        set.cameras[0].m_LookAt = cur_actor.Get_Pawn_Transform();
+        set.cameras[0].m_Follow = cur_actor.Get_Pawn_Transform();
+        set.cameras[0].m_Priority = 101; 
+    }
+
+    private void Stage_Locations(){
+                //store original positions
         Actor_Original_Pos = cur_actor.Get_Pawn_Transform().position;
         Target_Original_Pos = cur_targets[0].Get_Pawn_Transform().position;
         //set starting positions

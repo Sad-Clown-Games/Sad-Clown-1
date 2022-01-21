@@ -127,8 +127,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2
-  m_fontSizeBase: 2
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -191,7 +191,6 @@ MonoBehaviour:
   value: -999
   rainbow_text: 0
   alive_time: 1
-  fade_rate: 0.66
 --- !u!114 &646453263288183584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,4 +206,6 @@ MonoBehaviour:
   billboardX: 1
   billboardY: 1
   billboardZ: 1
+  isAbove: 0
+  lookPos: {x: 0, y: 0, z: 0}
   mainCamera: {fileID: 0}

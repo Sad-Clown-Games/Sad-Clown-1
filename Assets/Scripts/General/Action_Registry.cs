@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public  class Action_Registry : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public  class Action_Registry : MonoBehaviour
         item_registry.Add(item);
     }
 
-    public  Attack Get_Attack_By_Name(string name){
+    public Attack Get_Attack_By_Name(string name){
 
         Attack attack = attack_registry.Find(x=> x.gameObject.name == name);
         if(!attack)
@@ -47,7 +48,7 @@ public  class Action_Registry : MonoBehaviour
     }
 
     
-    public  List<Item> Get_Items_By_Names(string[] name){
+    public List<Item> Get_Items_By_Names(string[] name){
 
         List<Item> return_item = new List<Item>();
 

@@ -9,6 +9,9 @@ public class billboarder : MonoBehaviour
     public bool billboardX = true;
     public bool billboardY = false;
     public bool billboardZ = true;
+    public bool isAbove = false;
+    public Vector3 lookPos;
+
 
     public GameObject mainCamera;
 
@@ -17,18 +20,39 @@ public class billboarder : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Vector3 newLook = mainCamera.transform.position;
-        if(!billboardX){
-            newLook.x = transform.position.x;
+        Vector3 camLook = mainCamera.transform.position;
+        Vector3 localPos = transform.position;
+        if(!isAbove){
+
+            if(!billboardX){
+                newLook.x = localPos.x;
+            }
+            if(!billboardY){
+                newLook.y = localPos.y;
+            }
+            if(!billboardZ){
+                newLook.z = localPos.z;
+            }
+            transform.LookAt(newLook, Vector3.up);
         }
-        if(!billboardY){
-            newLook.y = transform.position.y;
+        else{
+            transform.LookAt(camLook);
+            Vector3 curRot = transform.localEulerAngles;
+            curRot.x = -90;
+            if(!billboardX){
+                curRot.x = 0;
+            }
+            if(!billboardY){
+                curRot.y = 0;
+            }
+            if(!billboardZ){
+                curRot.z = 0;
+            }
+            Debug.Log(curRot);
+            transform.localEulerAngles = curRot;
         }
-        if(!billboardZ){
-            newLook.y = transform.position.z;
-        }
-        transform.LookAt(newLook, Vector3.up);
     }
 }

@@ -13,13 +13,21 @@ public class SomeScriptEditor : Editor
          //to start from scratch, but I use this when I'm just adding a button or
          //some small addition and don't feel like recreating the whole inspector.
          Game_Manager gm = (Game_Manager) target;
-         if(GUILayout.Button("Save")) {
+         if(GUILayout.Button("SaveGameSave")) {
              //add everthing the button would do.
              gm.Save_Game();
          }
-        if(GUILayout.Button("Load")) {
+        if(GUILayout.Button("LoadGameSave")) {
             //add everthing the button would do.
             gm.Load_Game();
+         }
+        if(GUILayout.Button("SaveSession")) {
+             //add everthing the button would do.
+             gm.Save_Session();
+         }
+        if(GUILayout.Button("LoadSession")) {
+            //add everthing the button would do.
+            gm.Load_Session();
          }
     }
  }

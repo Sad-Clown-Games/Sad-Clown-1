@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1931823226878923435}
   - component: {fileID: 9057020220131097646}
   m_Layer: 0
-  m_Name: DummyAttack1
+  m_Name: DummyItem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc4fe06bff57114ba023fe61e3bb8f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item_name: 'item '
+  action_name: lorem
   damage: 0
-  description: item
+  description: Ipsem
+  is_flipped: 0
+  active_idx: 0
+  reserve_idx: 0
+  action_idx: 0
+  is_active: 0
+  speed: 1
+  next_action: {fileID: 0}
+  cur_actor: {fileID: 0}
+  controller: {fileID: 0}
+  cur_targets: []
+  damage_display: {fileID: 0}
+  original_list_idx: 0
+  types: 63
+  icon: {fileID: -2436517738755024721, guid: 5bc90b4c54698694b93a4c68498d4c63, type: 3}

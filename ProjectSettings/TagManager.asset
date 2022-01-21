@@ -7,6 +7,8 @@ TagManager:
   - Battle_Menu_Attack
   - battle_text
   - BattleController
+  - Party_Manager
+  - CrossFadeUI
   layers:
   - Default
   - TransparentFX
@@ -46,4 +48,7 @@ TagManager:
     locked: 0
   - name: Terrain
     uniqueID: 1966888963
+    locked: 0
+  - name: Player
+    uniqueID: 3932211979
     locked: 0

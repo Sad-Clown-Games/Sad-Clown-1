@@ -123,50 +123,50 @@ public class Battle_Menu : MonoBehaviour
         int prev_option_index = cur_option_idx;
         Grey_Out_Options(cur_combatant);
         if(vert < 0 && cur_option_idx < action_options.options.Count-1){
-                if(!holding_vert){
-                    cur_option_idx += 1;
-                    holding_vert = true;
-                    bool skip_option = false;
-                    //ok now we make sure that we're not selecting a gray option
-                    do
-                    {
-                        skip_option = false;
-                        switch (action_options.options[cur_option_idx].option_name)
-                            {
-                                case "Defend":
-                                    //maybe we disallow it under a status effect
-                                    break;
-                                case "Mental":
-                                    //no skills
-                                    if(cur_combatant.attacks.Count < 1){
-                                        cur_option_idx += 1;
-                                        skip_option = true;
-                                    }
-                                    break;
-                                case "Items":
-                                    //no items
-                                    if(Game_Manager.Instance.player_data.items.Count < 1){
-                                        cur_option_idx += 1;
-                                        skip_option = true;
-                                    }
-                                    break;
-                                case "Switch":
-                                    if(battle_controller.reserve_player_combatants.Count < 1){
-                                        cur_option_idx += 1;
-                                        skip_option = true;
-                                    }
-                                    //gray out if we have nobody to switch to
-                                    break;
-                                case "Run":
-                                    //maybe we gray out run at some point
-                                    break;
-                                default:
-                                    break;
-                            }
-                    } while (skip_option);
+            if(!holding_vert){
+                cur_option_idx += 1;
+                holding_vert = true;
+                bool skip_option = false;
+                //ok now we make sure that we're not selecting a gray option
+                do
+                {
+                    skip_option = false;
+                    switch (action_options.options[cur_option_idx].option_name)
+                        {
+                            case "Defend":
+                                //maybe we disallow it under a status effect
+                                break;
+                            case "Mental":
+                                //no skills
+                                if(cur_combatant.attacks.Count < 1){
+                                    cur_option_idx += 1;
+                                    skip_option = true;
+                                }
+                                break;
+                            case "Items":
+                                //no items
+                                if(Game_Manager.Instance.player_data.items.Count < 1){
+                                    cur_option_idx += 1;
+                                    skip_option = true;
+                                }
+                                break;
+                            case "Switch":
+                                if(battle_controller.reserve_player_combatants.Count < 1){
+                                    cur_option_idx += 1;
+                                    skip_option = true;
+                                }
+                                //gray out if we have nobody to switch to
+                                break;
+                            case "Run":
+                                //maybe we gray out run at some point
+                                break;
+                            default:
+                                break;
+                        }
+                } while (skip_option);
 
-                }
             }
+        }
         if(vert > 0 && cur_option_idx > 0){
             if(!holding_vert){
                 cur_option_idx -= 1;
@@ -461,12 +461,12 @@ public class Battle_Menu : MonoBehaviour
     public void SpecialAction_Select_Menu(float horiz, float vert, bool select, bool cancel){
         int prev_option_index = cur_option_idx;
          if(!holding_vert){
-                if(vert > 0 && cur_option_idx < special_action_options.Get_Option_Count()-1){
-                    cur_option_idx += 1;
+                if(vert > 0 && cur_option_idx > 0){
+                    cur_option_idx--;
                     holding_vert = true;
                 }
-                if(vert < 0 && cur_option_idx > 0){
-                    cur_option_idx -= 1;
+                if(vert < 0 && cur_option_idx < special_action_options.Get_Option_Count()-1){
+                    cur_option_idx++;
                     holding_vert = true;
                 }
          }

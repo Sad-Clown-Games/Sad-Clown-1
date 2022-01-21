@@ -9,6 +9,21 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Battle_Scene.unity
+    path: Assets/Battle_Scene/Battle_Scene.unity
     guid: cc0ac35aef57d8044900ca0c0eebbc76
+  - enabled: 1
+    path: Assets/Maps/Zone1_Tutorial/Zone1_Tutorial.unity
+    guid: c641fbca072f00a46963e39dc28d2673
+  - enabled: 1
+    path: Assets/Maps/TCrossStairs/TCross.unity
+    guid: d25c5fead5b35f04cb5e6d3a4149c5c0
+  - enabled: 1
+    path: Assets/Maps/Garbage Dungeon/GarbageDungeon.unity
+    guid: 7ef2ce574d3f92146bcfc9c720d3e55a
+  - enabled: 1
+    path: Assets/Maps/Guild/Guild.unity
+    guid: 9977c3a1c4a72884494a17d33dae4aa5
+  - enabled: 1
+    path: Assets/Maps/BathroomDungeon/BathroomDungeon.unity
+    guid: c37fd5c378ffa784e8a8bb76b4e8fa51
   m_configObjects: {}

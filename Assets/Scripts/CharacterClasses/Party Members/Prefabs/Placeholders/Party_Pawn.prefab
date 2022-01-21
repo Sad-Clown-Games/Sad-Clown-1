@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bb00b2064787040896132660a5b0b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  billboardX: 1
-  billboardY: 0
+  billboardX: 0
+  billboardY: 1
   billboardZ: 1
+  isAbove: 1
+  lookPos: {x: 0, y: 0, z: 0}
   mainCamera: {fileID: 0}
 --- !u!212 &3235016907829806635
 SpriteRenderer:

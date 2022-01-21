@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 19043.1055; Version 2009; 64bit' Language: 'en' Physical Memory: 16328 MB
+OS: 'Windows 10 Pro; OS build 19043.1415; Version 2009; 64bit' Language: 'en' Physical Memory: 24519 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -15,11 +15,11 @@ C:/Users/zmmor/Github Repos/Sad Clown Studio
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49950
+64382
 Successfully changed project path to: C:/Users/zmmor/Github Repos/Sad Clown Studio
 C:/Users/zmmor/Github Repos/Sad Clown Studio
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 93.01 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 79.73 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.2f1 (068178b99f32)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
@@ -30,438 +30,99 @@ Direct3D:
     Renderer: AMD Radeon RX 5700 (ID=0x731f)
     Vendor:   
     VRAM:     8151 MB
-    Driver:   27.20.22025.1006
+    Driver:   30.0.13025.5005
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56624
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56908
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002919 seconds.
+Registered in 0.004351 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 85.59 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 112.20 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.421 seconds
+- Completed reload, in  1.396 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002263 seconds.
+Registered in 0.002473 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 65.36 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 91.37 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.281 seconds
+- Completed reload, in  1.626 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 0.57 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.88 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3478 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 171.2 MB.
-System memory in use after: 169.3 MB.
+Unloading 3972 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 190.5 MB.
+System memory in use after: 188.5 MB.
 
-Unloading 175 unused Assets to reduce memory usage. Loaded Objects now: 3902.
-Total: 5.120900 ms (FindLiveObjects: 0.868900 ms CreateObjectMapping: 0.305900 ms MarkObjects: 2.238400 ms  DeleteObjects: 1.706100 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8291d8e0a03992e134f3cf43cd68023d') in 0.103820 seconds
-  Import took 0.112866 seconds .
+Unloading 173 unused Assets to reduce memory usage. Loaded Objects now: 4418.
+Total: 6.389100 ms (FindLiveObjects: 0.606200 ms CreateObjectMapping: 0.332900 ms MarkObjects: 3.711100 ms  DeleteObjects: 1.736900 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.427280 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3aa1cad6787933674c3b462c9e82af7b') in 0.012644 seconds
-  Import took 0.019178 seconds .
+  path: Assets/Animations/Characters/Shrigmato/Shrigmato.controller
+  artifactKey: Guid(091571c56f4932e4e8ca10e0d3ab994a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Characters/Shrigmato/Shrigmato.controller using Guid(091571c56f4932e4e8ca10e0d3ab994a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f19430c9934f804a89ebc527c3fbf6c7') in 0.037415 seconds
+  Import took 0.048455 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.877117 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faa97b48f63666f0abb379abe2b3c665') in 0.016022 seconds
-  Import took 0.022708 seconds .
+  Time since last request: 284.247781 seconds.
+  path: Assets/Character/Shroom/Sprite/Shroom1NormIdle.png
+  artifactKey: Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Character/Shroom/Sprite/Shroom1NormIdle.png using Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42402c8d8f4a14a5f2492be170cae9c1') in 0.080532 seconds
+  Import took 0.089290 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 6.722015 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '107f99a1f1a62cf3c3aa8fbe5d63f349') in 0.014056 seconds
-  Import took 0.019200 seconds .
+  Time since last request: 5.161342 seconds.
+  path: Assets/Character/Shroom/Sprite/Shroom1NormIdle.png
+  artifactKey: Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Character/Shroom/Sprite/Shroom1NormIdle.png using Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e3238b6927fbfa143c662b9894806b7') in 0.041857 seconds
+  Import took 0.049259 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 23.446797 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f348e5671d544919f8eb4c0b5f86fdd9') in 0.014345 seconds
-  Import took 0.020182 seconds .
+  Time since last request: 0.000392 seconds.
+  path: Assets/Character/Shroom/Sprite/Shroom1NormIdle.png
+  artifactKey: Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Character/Shroom/Sprite/Shroom1NormIdle.png using Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e3238b6927fbfa143c662b9894806b7') in 0.034594 seconds
+  Import took 0.040932 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 7.094675 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4863c0641e94e434adfb31ee1d12cbb') in 0.011002 seconds
-  Import took 0.016625 seconds .
+  Time since last request: 11.885058 seconds.
+  path: Assets/Character/Shroom/Sprite/Shroom1NormIdle.png
+  artifactKey: Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Character/Shroom/Sprite/Shroom1NormIdle.png using Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7533be212a166f5de1eda868d76f3fd5') in 0.040107 seconds
+  Import took 0.047216 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.762123 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8961ed0b6ec85680afcef7e4b0708f59') in 0.012842 seconds
-  Import took 0.019156 seconds .
+  Time since last request: 8.057167 seconds.
+  path: Assets/Character/Shroom/Sprite/Shroom1NormIdle.png
+  artifactKey: Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Character/Shroom/Sprite/Shroom1NormIdle.png using Guid(487a7eda33e99c546b2f242e45fcfbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f77f634a88a27e0dff9ace834a7f239') in 0.042036 seconds
+  Import took 0.050550 seconds .
 
-========================================================================
-Received Import Request.
-  Time since last request: 6.378832 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb27ae0219414a89b7e91e469304879f') in 0.008513 seconds
-  Import took 0.014369 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.914009 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3352b6f21dc2f35643c73a556dd91b6a') in 0.007442 seconds
-  Import took 0.016164 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.097377 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2153173eecec0f9a3609878d72a93af2') in 0.008886 seconds
-  Import took 0.022855 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.394236 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52cc342830a79bcf62e31f94fa67b31d') in 0.007169 seconds
-  Import took 0.019033 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.525720 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6aca9930385869ca2677502e197c862e') in 0.007151 seconds
-  Import took 0.012508 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.788632 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a72de87055d7cb066e884f74875601c') in 0.009814 seconds
-  Import took 0.015589 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.177982 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '055420c9f3b30c39b6c4048291d96e6f') in 0.007744 seconds
-  Import took 0.013509 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.196382 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbfb2fd60d7397a4e73fa8934e107e93') in 0.007256 seconds
-  Import took 0.015704 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.910380 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e13bf35117aed18e7ab7fc7b7be43d6') in 0.008026 seconds
-  Import took 0.014067 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.933122 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebfa1ec1f1cac97ead431f7aa2107bfe') in 0.011976 seconds
-  Import took 0.018170 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.623200 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a74d2895c88743550c659b3b7be6d9df') in 0.006856 seconds
-  Import took 0.012598 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.198249 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38288690c71a03ba3981a421cdeb461c') in 0.006905 seconds
-  Import took 0.012521 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.835360 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e89a796f739b463aa06228f118300eb') in 0.044580 seconds
-  Import took 0.050133 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.592718 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1979f63f4ee60cc084275d45d9afa3f4') in 0.012676 seconds
-  Import took 0.020456 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.852297 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b8a37e81439a6933c1ac7f93c12a03c') in 0.010221 seconds
-  Import took 0.016700 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.858466 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aecd6947bcc6f353f39eacb1eab6fb5e') in 0.011647 seconds
-  Import took 0.018228 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 33.880535 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8b0f7344fb9ebc547cff18013af98ca') in 0.011028 seconds
-  Import took 0.018691 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 14.803746 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f368c616dc37e5283a8c0233e3e9c07') in 0.020506 seconds
-  Import took 0.026325 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.988669 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17052773a8e072ad0632499f8777376e') in 0.011297 seconds
-  Import took 0.016737 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.911139 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76029a444b707b08a671a79cc8965d00') in 0.015952 seconds
-  Import took 0.021337 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.250092 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdc6d51aa468b9777919b90a5e25c18f') in 0.009928 seconds
-  Import took 0.016428 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.782871 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78ffbc6c6e262fa05146067280ac57e2') in 0.011716 seconds
-  Import took 0.021990 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 47.674516 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a50038e0b457de57677448d5c9bc73b7') in 0.009955 seconds
-  Import took 0.015656 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.891159 seconds.
-  path: Assets/Maps/Zone1_Tutorial/texture_1.png
-  artifactKey: Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Maps/Zone1_Tutorial/texture_1.png using Guid(7b83680f5c3200f4e9c34d9182f89d35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8aa73f0ea2ef68d07f614344e122198c') in 0.012537 seconds
-  Import took 0.021394 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001940 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.60 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.092 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.75 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3320 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 165.2 MB.
-System memory in use after: 163.3 MB.
-
-Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 3912.
-Total: 6.775000 ms (FindLiveObjects: 1.043700 ms CreateObjectMapping: 0.625300 ms MarkObjects: 3.948000 ms  DeleteObjects: 1.154700 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003531 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.71 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.313 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.03 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3320 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 165.2 MB.
-System memory in use after: 163.4 MB.
-
-Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 3915.
-Total: 4.248300 ms (FindLiveObjects: 0.366000 ms CreateObjectMapping: 0.158100 ms MarkObjects: 2.599900 ms  DeleteObjects: 1.123200 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002797 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.62 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.310 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3770 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 179.7 MB.
-System memory in use after: 177.8 MB.
-
-Unloading 43 unused Assets to reduce memory usage. Loaded Objects now: 4385.
-Total: 3.768600 ms (FindLiveObjects: 0.351400 ms CreateObjectMapping: 0.227200 ms MarkObjects: 2.171600 ms  DeleteObjects: 1.017100 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002211 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.60 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.020 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3769 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 179.3 MB.
-System memory in use after: 177.5 MB.
-
-Unloading 43 unused Assets to reduce memory usage. Loaded Objects now: 4388.
-Total: 5.008900 ms (FindLiveObjects: 0.403800 ms CreateObjectMapping: 0.237700 ms MarkObjects: 2.830800 ms  DeleteObjects: 1.534200 ms)
-
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

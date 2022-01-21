@@ -290,7 +290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action_name: dummyattack
   damage: 1
-  description: '%a attacks %t with a mighty blow!'
+  description: ipsem
+  battle_message: '%a attacks %t with a mighty blow!'
   is_flipped: 0
   active_idx: 0
   reserve_idx: 0
@@ -306,8 +307,8 @@ MonoBehaviour:
   Camera_1_End_Pos: {x: 0, y: 0, z: 0}
   Actor_Original_Pos: {x: 0, y: 0, z: 0}
   Target_Original_Pos: {x: 0, y: 0, z: 0}
-  Actor_Start_Pos: {x: 0, y: 0.5, z: -2.5}
-  Target_Start_Pos: {x: 0, y: 0.5, z: 2.5}
+  Actor_Start_Pos: {x: 0, y: 0, z: -2.5}
+  Target_Start_Pos: {x: 0, y: 0, z: 2.5}
   Actor_End_Pos: {x: 0, y: 0, z: 0}
   Stage_Location: {x: 0, y: 0, z: 0}
   set: {fileID: 8140344142721186103}
@@ -320,6 +321,7 @@ MonoBehaviour:
   hang_time: 1
   wait_time: 0.75
   crit: 0
+  debug_on: 0
 --- !u!1 &6232741398245671208
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4862125194132266594
 Transform:
   m_ObjectHideFlags: 0
@@ -461,7 +463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1342224060628668059
 Transform:
   m_ObjectHideFlags: 0

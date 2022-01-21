@@ -3,7 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using NodeCanvas.DialogueTrees;
+using UnityEngine.EventSystems;
 
 namespace NodeCanvas.DialogueTrees.UI.Examples{
 
@@ -26,12 +28,13 @@ namespace NodeCanvas.DialogueTrees.UI.Examples{
 		//Group...
 		[Header("Subtitles")]
 		public RectTransform subtitlesGroup;
-		public Text actorSpeech;
-		public Text actorName;
+		public TextMeshProUGUI actorSpeech;
+		public TextMeshProUGUI actorName;
 		public Image actorPortrait;
 		public RectTransform waitInputIndicator;
 		public SubtitleDelays subtitleDelays = new SubtitleDelays();
 		public List<AudioClip> typingSounds;
+		public List<AudioClip> curTypingSounds;
 
 		//Group...
 		[Header("Multiple Choice")]
@@ -120,7 +123,7 @@ namespace NodeCanvas.DialogueTrees.UI.Examples{
 				actorSpeech.text = text;
 				var timer = 0f;
 				while (timer < audio.length){
-					if (skipOnInput && Input.anyKeyDown){
+					if (skipOnInput && Input.GetButtonDown("Select")){
 						playSource.Stop();
 						break;
 					}
@@ -171,7 +174,7 @@ namespace NodeCanvas.DialogueTrees.UI.Examples{
 
 			if (waitForInput){
 				waitInputIndicator.gameObject.SetActive(true);
-				while(!Input.anyKeyDown){
+				while(!Input.GetButtonDown("Select")){
 					yield return null;
 				}
 				waitInputIndicator.gameObject.SetActive(false);
@@ -192,7 +195,7 @@ namespace NodeCanvas.DialogueTrees.UI.Examples{
 		}
 
 		IEnumerator CheckInput(System.Action Do){
-			while(!Input.anyKeyDown){
+			while(!Input.GetButtonDown("Select")){
 				yield return null;
 			}
 			Do();
@@ -223,16 +226,23 @@ namespace NodeCanvas.DialogueTrees.UI.Examples{
 				btn.gameObject.SetActive(true);
 				btn.transform.SetParent(optionsGroup.transform, false);
 				btn.transform.localPosition = (Vector2)optionButton.transform.localPosition - new Vector2(0, buttonHeight * i);
-				btn.GetComponentInChildren<Text>().text = pair.Key.text;
+				btn.GetComponentInChildren<TextMeshProUGUI>().text = pair.Key.text;
 				cachedButtons.Add(btn, pair.Value);
 				btn.onClick.AddListener( ()=> { Finalize(info, cachedButtons[btn]);	});
+				//Sets the UI to be used with keyboard and controller
+				if(i == 0){
+					EventSystem.current.SetSelectedGameObject(null);
+					EventSystem.current.SetSelectedGameObject(btn.gameObject);
+				}
 				i++;
 			}
 
 			if (info.showLastStatement){
 				subtitlesGroup.gameObject.SetActive(true);
-				var newY = optionsGroup.position.y + optionsGroup.sizeDelta.y + 1;
-				subtitlesGroup.position = new Vector2(subtitlesGroup.position.x, newY);
+				//this code chugs balls, it moves the dialogue window to this horrible arbitrary point based off the 
+				//options position,
+				//var newY = optionsGroup.position.y + optionsGroup.sizeDelta.y + 1;
+				//subtitlesGroup.position = new Vector2(subtitlesGroup.position.x, newY);
 			}
 
 			if (info.availableTime > 0){

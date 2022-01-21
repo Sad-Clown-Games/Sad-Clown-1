@@ -37,7 +37,7 @@ public static class BillboardHelper{
         //is +90 degrees above +- abovethreshold
         //is 0 degrees to the side +- abovethreshold
         Vector3 dir_vec = cam.position - obj.position;
-        float ocangle = Vector3.Angle(dir_vec,Vector3.back);
+        float ocangle = Vector3.Angle(dir_vec,obj.forward);
 
         if(ocangle > (180 - backThreshold) && 
            ocangle < (180 + backThreshold)){
@@ -49,7 +49,7 @@ public static class BillboardHelper{
         //is +90 degrees above +- abovethreshold
         //is 0 degrees to the side +- abovethreshold
         Vector3 dir_vec = cam.position - obj.position;
-        float ocangle = Vector3.Angle(dir_vec,Vector3.back);
+        float ocangle = Vector3.Angle(dir_vec,obj.forward);
 
         if(ocangle > (0 - frontThreshold) && 
            ocangle < (0 + frontThreshold)){
@@ -61,7 +61,7 @@ public static class BillboardHelper{
         //is +90 degrees above +- abovethreshold
         //is 0 degrees to the side +- abovethreshold
         Vector3 dir_vec = cam.position - obj.position;
-        float ocangle = Vector3.Angle(dir_vec,Vector3.right);
+        float ocangle = Vector3.Angle(dir_vec,obj.right);
 
         if(ocangle > (180 - leftThreshold) && 
            ocangle < (180 + leftThreshold)){
@@ -73,7 +73,7 @@ public static class BillboardHelper{
         //is +90 degrees above +- abovethreshold
         //is 0 degrees to the side +- abovethreshold
         Vector3 dir_vec = cam.position - obj.position;
-        float ocangle = Vector3.Angle(dir_vec,Vector3.right);
+        float ocangle = Vector3.Angle(dir_vec,obj.right);
         //Debug.Log(ocangle);
 
         if(ocangle > (0 - rightThreshold) && 
@@ -86,7 +86,7 @@ public static class BillboardHelper{
         //is +90 degrees above +- abovethreshold
         //is 0 degrees to the side +- abovethreshold
         Vector3 dir_vec = cam.position - obj.position;
-        float ocangle = Vector3.Angle(dir_vec,Vector3.forward);
+        float ocangle = Vector3.Angle(dir_vec,obj.forward);
 
         if(ocangle > (180 - belowThreshold) && 
            ocangle < (180 + belowThreshold)){

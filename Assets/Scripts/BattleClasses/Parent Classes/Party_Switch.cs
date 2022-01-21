@@ -11,8 +11,8 @@ public class Party_Switch : Action
     } 
     override public void Do_Action(){
         is_active = true;
-        var gm = Game_Manager.Instance;
-        gm.Swap_Party_Order(active_idx,reserve_idx);
+        var pc = GameObject.FindGameObjectWithTag("Party_Manager").GetComponent<Party_Controller>(); //this is fucked ok really fucked we shouldn't do this
+        pc.Swap_Party_Order(active_idx,reserve_idx); //see it fucked up just like I said
         Exit_Action();
     }
 

@@ -14,6 +14,7 @@ public class Battle_Option_Item : MonoBehaviour
     public GameObject up_adjacent;
     public GameObject down_adjacent;
     public Item item;
+    public int store_idx;
     public string description;
     public TMPro.TMP_Text text;
     public bool is_active;

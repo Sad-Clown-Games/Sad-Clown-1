@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8878564890444239835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8878564890444239844}
+  - component: {fileID: 3454258133064093783}
+  - component: {fileID: 5948271967824667595}
+  - component: {fileID: 7549903148585873278}
+  m_Layer: 0
+  m_Name: PartyMember_PlaceHolder5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8878564890444239844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8878564890444239835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3454258133064093783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8878564890444239835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb0856ffeeac2a48abaf1f09b9e3b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character_name: PartyMember5
+  battle_object: {fileID: 5948271967824667595}
+--- !u!114 &5948271967824667595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8878564890444239835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c79a2862f7280478f70d5a7c09913b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle_cam: {fileID: 0}
+  camera_transform: {fileID: 0}
+  billboarder: {fileID: 0}
+  combatant_name: Scagdingo
+  portrait: {fileID: -2436517738755024721, guid: 5bc90b4c54698694b93a4c68498d4c63, type: 3}
+  debug: 0
+  default_attack: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  default_guard: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  special_action: {fileID: 0}
+  target_arrow_location: {x: 0, y: 1, z: 0}
+  pawn: {fileID: 0}
+  pawn_prefab: {fileID: 5696637495109534840, guid: af7168d3035d2f340babcb9057deadd9, type: 3}
+  attacks:
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  menu_pos: {x: 0, y: -0.5, z: 3.82}
+  offset: {x: 0, y: 0, z: 0}
+  stats:
+    max_hp: 10
+    max_mp: 10
+    cur_hp: 10
+    cur_mp: 10
+    atk: 10
+    def: 10
+    luc: 10
+    spd: 10
+    crit_dmg: 0
+    status_effects: []
+    equipment:
+      head: 
+      body: 
+      weapon: 
+    skills: []
+    is_unlocked: 1
+    party_order: 4
+  animator: {fileID: 0}
+  battle_sprite: {fileID: -2436517738755024721, guid: 5bc90b4c54698694b93a4c68498d4c63, type: 3}
+  attacked_pos_offset: {x: 0, y: 0, z: 1}
+  damage_value_offset: {x: 0, y: 0.75, z: 0}
+  stage_pos_offset: {x: 0, y: 0, z: 0}
+  is_opponent: 0
+  is_dead: 0
+  die_with_sprite: 0
+  b_anim_walk: 0
+  b_anim_spec: 0
+  b_anim_dying: 0
+  b_anim_casting: 0
+  b_anim_attk: 0
+  b_anim_hurt: 0
+  b_anim_idle: 0
+  b_anim_dead: 0
+  is_being_switched: 0
+--- !u!95 &7549903148585873278
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8878564890444239835}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

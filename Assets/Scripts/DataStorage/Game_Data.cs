@@ -5,29 +5,36 @@ using UnityEngine;
 [System.Serializable]
 public class Game_Data
 {
-    public Save_Location save_location; //for loading correct scene and loaction
+    public Scene_Loc save_scene; //for loading correct scene and loaction
+    public Scene_Loc last_scene;
+    public Scene_Loc next_scene;
     public Saved_Items saved_items; //list of items
+    public int location_state;
     
     //storing party order as a list of ints that corresponds to the index that the placeholders are in
     //IT IS VERY IMPORTANT THAT THE CHARACTERS ARE ORDERED THE SAME IN EVERY LIST IN THE INSPECTOR, OTHERWISE WE GET OUT OF ORDER SHIT
     //When we change party order, we just swap values, simple as that.
     public Character_Data party_data;
     public Game_Flags game_flags; //flags for scenes and global
+
+    public void Set_Last_Scene(Scene_Loc loc){
+        last_scene = loc;
+    }
+    public void Set_Save_Scene(Scene_Loc loc){
+        save_scene = loc;
+    }
+    public void Set_Next_Scene(Scene_Loc loc){
+        next_scene = loc;
+    }
 }
 
 //for storing info on when we go into battle
 [System.Serializable]
-public struct Last_Scene_Location{
-    public SerializableVector3 save_location;
+public struct Scene_Loc{
+    public SerializableVector3 location;
     public string scene_name;
 }
 
-[System.Serializable]
-public struct Save_Location{
-    public string name;
-    public string scene_name;
-    public SerializableVector3 save_location;
-}
 
 [System.Serializable]
 public struct Saved_Items{
@@ -44,6 +51,8 @@ public struct Character_Stats{
     public int def;
     public int luc;
     public int spd;
+    public int exp;
+    public int level;
     public float crit_dmg;
     public string[] status_effects;
     public Saved_Equipment equipment;
@@ -54,41 +63,33 @@ public struct Character_Stats{
 
 [System.Serializable]
 public struct Saved_Equipment{
-    public string head;
-    public string body;
     public string weapon;
+    public string armor;
+    public string trinket;
 }
 
 [System.Serializable]
 public struct Character_Data{
-    public CharData_Placeholder1 placeholder1;
-    public CharData_Placeholder2 placeholder2;
-    public CharData_Placeholder3 placeholder3;
-    public CharData_Placeholder4 placeholder4;
-    public CharData_Placeholder1 placeholder5;
-    public CharData_Placeholder2 placeholder6;
-    public CharData_Placeholder3 placeholder7;
-    public CharData_Placeholder4 placeholder8;
+    public CharData_Alpha alpha;
+    public CharData_Mimosa mimosa;
+    public CharData_Conner conner;
+    public CharData_Asher asher;
+    public CharData_Judas judas;
+    public CharData_Ferdinand ferdinand;
+    public CharData_Placeholder7 placeholder7;
+    public CharData_Placeholder8 placeholder8;
 }
 
 //Each party member gets a struct
 [System.Serializable]
-public struct CharData_Placeholder1{
+public struct CharData_Alpha{
     public Character_Stats stats;
     public bool unique_flag;
     public int unique_stat;
 }
 
 [System.Serializable]
-public struct CharData_Placeholder2{
-    public Character_Stats stats;
-    public Saved_Equipment equipment;
-    public bool unique_flag;
-    public int unique_stat;
-}
-
-[System.Serializable]
-public struct CharData_Placeholder3{
+public struct CharData_Mimosa{
     public Character_Stats stats;
     public Saved_Equipment equipment;
     public bool unique_flag;
@@ -96,7 +97,7 @@ public struct CharData_Placeholder3{
 }
 
 [System.Serializable]
-public struct CharData_Placeholder4{
+public struct CharData_Conner{
     public Character_Stats stats;
     public Saved_Equipment equipment;
     public bool unique_flag;
@@ -104,7 +105,7 @@ public struct CharData_Placeholder4{
 }
 
 [System.Serializable]
-public struct CharData_Placeholder5{
+public struct CharData_Asher{
     public Character_Stats stats;
     public Saved_Equipment equipment;
     public bool unique_flag;
@@ -112,7 +113,15 @@ public struct CharData_Placeholder5{
 }
 
 [System.Serializable]
-public struct CharData_Placeholder6{
+public struct CharData_Judas{
+    public Character_Stats stats;
+    public Saved_Equipment equipment;
+    public bool unique_flag;
+    public int unique_stat;
+}
+
+[System.Serializable]
+public struct CharData_Ferdinand{
     public Character_Stats stats;
     public Saved_Equipment equipment;
     public bool unique_flag;

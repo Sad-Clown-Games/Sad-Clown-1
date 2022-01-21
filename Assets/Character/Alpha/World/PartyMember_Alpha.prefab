@@ -1,0 +1,218 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6661577751498920022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6661577751498920023}
+  - component: {fileID: 4047353017935954400}
+  - component: {fileID: 8091503485267014815}
+  - component: {fileID: -7155577498414225630}
+  m_Layer: 0
+  m_Name: PartyMember_Alpha
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6661577751498920023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661577751498920022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4047353017935954400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661577751498920022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d75de7cf6d2874dadbb8f35f55ca45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character_name: Alpha
+  long_description: Alpha
+  battle_object: {fileID: -7155577498414225630}
+  full_body_sprite: {fileID: 0}
+--- !u!114 &8091503485267014815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661577751498920022}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c79a2862f7280478f70d5a7c09913b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle_cam: {fileID: 0}
+  camera_transform: {fileID: 0}
+  billboarder: {fileID: 0}
+  combatant_name: Alpha
+  combatant_title: Lone Gunslinger
+  portrait: {fileID: -2436517738755024721, guid: 5bc90b4c54698694b93a4c68498d4c63, type: 3}
+  debug: 0
+  default_attack: {fileID: 0}
+  default_guard: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  special_action: {fileID: 0}
+  target_arrow_location: {x: 0, y: 1, z: 0}
+  pawn: {fileID: 0}
+  pawn_prefab: {fileID: 5696637495109534840, guid: 939aff82c752eb74dbb480cea800cd8d, type: 3}
+  attacks:
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  - {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  menu_pos: {x: 0, y: -0.5, z: 3.82}
+  offset: {x: 0, y: 0.65, z: 0}
+  stats:
+    max_hp: 10
+    max_mp: 10
+    cur_hp: 10
+    cur_mp: 10
+    atk: 10
+    def: 10
+    luc: 10
+    spd: 10
+    exp: 0
+    level: 0
+    crit_dmg: 0
+    status_effects: []
+    equipment:
+      weapon: 
+      armor: 
+      trinket: 
+    skills: []
+    is_unlocked: 1
+    party_order: 0
+  animator: {fileID: 0}
+  battle_sprite: {fileID: -2436517738755024721, guid: 5bc90b4c54698694b93a4c68498d4c63, type: 3}
+  attacked_pos_offset: {x: 0, y: 0, z: 1}
+  damage_value_offset: {x: 0, y: 0.75, z: 0}
+  stage_pos_offset: {x: 0, y: 0.635, z: 0}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}
+  trinket: {fileID: 0}
+  is_opponent: 0
+  is_dead: 0
+  die_with_sprite: 0
+  b_anim_walk: 0
+  b_anim_spec1: 0
+  b_anim_spec2: 0
+  b_anim_spec3: 0
+  b_anim_spec4: 0
+  b_anim_spec5: 0
+  b_anim_spec6: 0
+  b_anim_dying: 0
+  b_anim_casting: 0
+  b_anim_attk: 0
+  b_anim_hurt: 0
+  b_anim_idle: 0
+  b_anim_dead: 0
+  rattle_death_time: 0.35
+  rattle_hurt_time: 0.35
+  is_being_switched: 0
+--- !u!114 &-7155577498414225630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661577751498920022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657d65f5198656c43a05ecdade336f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle_cam: {fileID: 0}
+  camera_transform: {fileID: 0}
+  billboarder: {fileID: 0}
+  combatant_name: Alpha
+  combatant_title: Lone Gunslinger
+  portrait: {fileID: 0}
+  debug: 0
+  default_attack: {fileID: -5952568776269083460, guid: a9e61cbbb2eba5f4dbb1111540f61063, type: 3}
+  default_guard: {fileID: 5406152366905596965, guid: 382f174775b2f8742a1787c4c14a0e98, type: 3}
+  special_action: {fileID: 0}
+  target_arrow_location: {x: 0, y: 0, z: 0}
+  pawn: {fileID: 0}
+  pawn_prefab: {fileID: 5696637495109534840, guid: 939aff82c752eb74dbb480cea800cd8d, type: 3}
+  attacks: []
+  menu_pos: {x: 0, y: -0.5, z: 3.82}
+  offset: {x: 0, y: 0.65, z: 0}
+  stats:
+    max_hp: 0
+    max_mp: 0
+    cur_hp: 0
+    cur_mp: 0
+    atk: 0
+    def: 0
+    luc: 0
+    spd: 0
+    exp: 0
+    level: 0
+    crit_dmg: 0
+    status_effects: []
+    equipment:
+      weapon: 
+      armor: 
+      trinket: 
+    skills: []
+    is_unlocked: 0
+    party_order: 0
+  animator: {fileID: 0}
+  battle_sprite: {fileID: 0}
+  attacked_pos_offset: {x: 0, y: 0, z: 1}
+  damage_value_offset: {x: 0, y: 0.75, z: 0}
+  stage_pos_offset: {x: 0, y: 0.635, z: 0}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}
+  trinket: {fileID: 0}
+  is_opponent: 0
+  is_dead: 0
+  die_with_sprite: 0
+  b_anim_walk: 0
+  b_anim_spec1: 0
+  b_anim_spec2: 0
+  b_anim_spec3: 0
+  b_anim_spec4: 0
+  b_anim_spec5: 0
+  b_anim_spec6: 0
+  b_anim_dying: 0
+  b_anim_casting: 0
+  b_anim_attk: 0
+  b_anim_hurt: 0
+  b_anim_idle: 0
+  b_anim_dead: 0
+  rattle_death_time: 0.35
+  rattle_hurt_time: 0.35
+  is_being_switched: 0

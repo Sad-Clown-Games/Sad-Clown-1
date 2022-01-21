@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
+using NodeCanvas.DialogueTrees;
 
 public class Battle_Controller : MonoBehaviour
 {
@@ -34,24 +36,47 @@ public class Battle_Controller : MonoBehaviour
     public bool lost = false;
     public Vector3 party_location;
     public BattleUIController UIController;
+    public Party_Controller party_controller;
+    public bool battle_started = false;
+    public List<Item> battle_end_items;
+    public int battle_end_exp;
+    List<Player_Combatant> battle_end_leveled; 
+    public bool dialogue_started;
+    public bool done_listing_items;
+    public bool done_listing_levels;
+    public bool set_won_flags;
+    private int end_item_idx = 0;
+    private int end_level_idx = 0;
+    public DialogueTreeController win_dialogue_controller;
+    public DialogueTreeController level_dialogue_controller;
+    public DialogueTreeController item_dialogue_controller;
+    public DialogueTreeController lose_dialogue_controller;
+    public NodeCanvas.Framework.Blackboard win_blackboard;
+    public NodeCanvas.Framework.Blackboard level_blackboard;
+    public NodeCanvas.Framework.Blackboard item_blackboard;
+    public NodeCanvas.Framework.Blackboard lose_blackboard;
 
     // Start is called before the first frame update
     void Start()
     {
         round_actions = new List<CombatAction>();
-        Start_Round();
+        battle_started = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Game_Manager.Instance.finished_loading && !battle_started){
+            battle_started = true;
+            Start_Round();
+        }
         if(is_executing_actions){
             //Check if the party won or lose
             if(Is_Party_Dead()){
-                End_Battle_Win();
+                End_Battle_Lose();
             }
             if(Is_Enemies_Dead()){
-                End_Battle_Lose();
+                End_Battle_Win();
             }
             if(!cur_executing_combat_action.is_started && is_executing_actions){ //starting new action
                 //startup actions
@@ -60,8 +85,9 @@ public class Battle_Controller : MonoBehaviour
                 cur_executing_action.is_active = true;
                 cur_executing_combat_action.is_started = true;
                 cur_executing_combat_action.action.controller = this;
-                if(cur_executing_action_index == 0)
+                if(cur_executing_action_index == 0){
                     cur_executing_action.Stage_Action();
+                }
                 cur_executing_action.Do_Action();
             }
             else if(is_executing_actions && !cur_executing_action.is_active){ //if action already done
@@ -77,12 +103,22 @@ public class Battle_Controller : MonoBehaviour
                     cur_executing_combat_action = round_actions[cur_executing_action_index];
             }
         }
+        if(set_won_flags){
+            End_Dialogue();
+        }
     }
 
     public List<Combatant> Get_All_Combatants_Player_First(){
         List<Combatant> combatants = new List<Combatant>();
         combatants.AddRange(active_player_combatants);
         combatants.AddRange(enemy_combatants);
+        return combatants;
+    }
+
+    public List<Combatant> Get_All_Player_Combatants(){
+        List<Combatant> combatants = new List<Combatant>();
+        combatants.AddRange(active_player_combatants);
+        combatants.AddRange(reserve_player_combatants);
         return combatants;
     }
 
@@ -148,7 +184,7 @@ public class Battle_Controller : MonoBehaviour
         cur_selected_action.action = party_switch;
         cur_selected_action.speed = cur_selected_player.stats.spd + party_switch.speed;
         round_actions.Add(cur_selected_action); 
-        Game_Manager.Instance.Flip_Switch_Flag(party_switch.reserve_idx);
+        party_controller.Flip_Switch_Flag(party_switch.reserve_idx);
         if(cur_cp_idx < active_player_combatants.Count-1)
             NextPlayerCombatant();
         else{
@@ -163,7 +199,7 @@ public class Battle_Controller : MonoBehaviour
         if(cur_cp_idx > 0){
             var last_action = round_actions[round_actions.Count-1];
             if(last_action.action.GetType().Name == "Party_Switch"){
-                Game_Manager.Instance.Flip_Switch_Flag(last_action.action.reserve_idx);
+                party_controller.Flip_Switch_Flag(last_action.action.reserve_idx);
             }
             round_actions.RemoveAt(round_actions.Count-1);
             cur_cp_idx--;
@@ -212,9 +248,15 @@ public class Battle_Controller : MonoBehaviour
     }
 
     public void Update_Party_Data(){
-        List<Player_Combatant> party = Game_Manager.Instance.Get_Combat_Party_By_Order();
-        active_player_combatants = party.GetRange(0,4);
-        reserve_player_combatants = party.GetRange(4,party.Count-4);
+        List<Player_Combatant> party = party_controller.Get_Combat_Party_By_Order();
+        int party_count = party.Count;
+        if(party_count < 4){
+            active_player_combatants = party.GetRange(0,party_count);
+        }
+        else{
+            active_player_combatants = party.GetRange(0,4);
+            reserve_player_combatants = party.GetRange(4,party.Count-4); //start index at 4 and then count 0-4 up?? this method is fucked.
+        }
     }
 
     private void Start_Round(){
@@ -229,18 +271,19 @@ public class Battle_Controller : MonoBehaviour
     }
 
     private void Set_Active_Pawns(){
+        //killing and remaking pawns will let us switch characters easier. 
         foreach(GameObject a in pawns){
             Destroy(a);
         }
         pawns.Clear();
         foreach(Player_Combatant a in active_player_combatants){
-            var cur = Instantiate(a.pawn_prefab);
+            var cur = a.Initialize_Pawn();
             pawns.Add(cur);
             a.pawn = cur;
         }
         for(int i = 0; i < pawns.Count; i++){
             Vector3 offset = active_player_combatants[i].offset + party_location;
-            offset.x = (i*2.15f) - 3.5f;
+            offset.x = (i*2.15f) - pawns.Count;
             pawns[i].transform.position = offset;
             UIController.bannerController.GetPartyMemberByIdx(i).Fill_Combatant_Info(active_player_combatants[i]);
         }
@@ -292,6 +335,67 @@ public class Battle_Controller : MonoBehaviour
         battle_menu.Reset_Menu_Cameras(); //set cameras to 0
         party_cam.Priority = 99;
         won = true; //accept input in update based on won
+        set_won_flags = true; 
+        //calculate drops
+        foreach(Enemy_Combatant e in enemy_combatants){
+            battle_end_exp += e.Get_Exp();
+            battle_end_items.AddRange(e.Calculate_Drop());
+        }
+        //calculate exp
+        battle_end_leveled = Dispense_EXP(battle_end_exp);
+    }
+
+    //return a list of characters that leveled up
+    public List<Player_Combatant> Dispense_EXP(int exp){
+        List<Player_Combatant> leveled = new List<Player_Combatant>();
+        foreach(Player_Combatant p in Get_All_Player_Combatants()){
+            int cur_level = p.GetLevel();
+            int new_level = p.AddEXP(exp);
+            if(new_level == cur_level){
+                leveled.Add(p);
+            }   
+        }
+        return leveled;
+    }
+
+    public void End_Dialogue(){
+        if(!dialogue_started){
+            win_dialogue_controller.StartDialogue();
+            dialogue_started = true;
+        }
+        if(dialogue_started && !win_dialogue_controller.isRunning && !item_dialogue_controller.isRunning){
+            if(end_item_idx < battle_end_items.Count){
+                    item_blackboard.SetVariableValue("item",battle_end_items[end_item_idx].action_name);
+                    item_dialogue_controller.StartDialogue();
+                    end_item_idx++;
+            }
+        }
+        if(end_item_idx >= battle_end_items.Count && !item_dialogue_controller.isRunning){
+            done_listing_items = true;
+        }
+
+        if(dialogue_started && !win_dialogue_controller.isRunning && done_listing_items && !level_dialogue_controller.isRunning){
+            if(end_level_idx < battle_end_leveled.Count){
+                level_blackboard.SetVariableValue("level",battle_end_leveled[end_level_idx].GetLevel());
+                level_blackboard.SetVariableValue("character",battle_end_leveled[end_level_idx].GetEXP());
+                level_dialogue_controller.StartDialogue();
+                end_level_idx++;
+            }
+        }
+        if(dialogue_started && done_listing_items 
+        && !level_dialogue_controller.isRunning
+        && !item_dialogue_controller.isRunning
+        && !win_dialogue_controller.isRunning){
+           StartCoroutine(ReturnToWorld());
+        }
+    }
+
+    float transition_time = 1f;
+    public Animator transition;
+    IEnumerator ReturnToWorld(){   
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transition_time); //why don't I do this more lol
+        SceneTransferHelper.GoToWorldSceneFromBattleScene();
     }
 
     public void ShowAttackText(string text){

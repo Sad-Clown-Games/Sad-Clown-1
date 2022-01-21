@@ -13,9 +13,5 @@ public class PartyMember_PlaceHolder5 : Player_Character{
     private void Start() {
         combatant = GetComponent<Player_Combatant>();
     }
-
-    public Character_Stats Get_Stats(){
-        return combatant.GetCharacter_Stats();
-    }
     
 }
